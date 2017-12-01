@@ -1,5 +1,7 @@
 package anthill.model;
 
+import java.util.List;
+
 public class Worker extends Role {
   Double carry;
   
@@ -7,13 +9,12 @@ public class Worker extends Role {
     super();
   }
   
-  void selfFeed(int weight) {
-    //this.foodQtty += weight;
-    super.
+  void selfFeed(Ant a, double weight) {
+    a.setFoodQtty(weight);
   }
   
-  void feedOther(int id, int weight) {
-    
+  void feedOther(List<Ant> la, int id, double weight) {
+    la.get(id).setFoodQtty(weight);
   }
   
   void clean() {
@@ -23,9 +24,4 @@ public class Worker extends Role {
   void fight(Prey p) {
     
   }
-  
-  void feedMaggot(int id, int weight) {
-    
-  }
-  
 }
