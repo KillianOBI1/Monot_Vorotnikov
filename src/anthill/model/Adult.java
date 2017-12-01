@@ -5,6 +5,7 @@ public class Adult extends State {
   Role role;
   
   String state;
+  
   public Adult(Role role) {
     this.state = "Egg";
     this.role = role;

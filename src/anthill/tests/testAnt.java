@@ -12,7 +12,7 @@ public class testAnt {
     System.out.println(newAnt.getStateString());
     newAnt.changeState();
     State s = newAnt.getState();
-    
+    System.out.println(s);
     State neW = new Adult(new Worker());
     System.out.println(neW.getRole());
   }

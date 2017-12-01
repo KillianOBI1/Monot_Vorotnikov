@@ -1,5 +1,6 @@
 package anthill.model;
 
+import java.util.Calendar;
 import java.util.Date;
 
 public class Ant {
@@ -11,8 +12,10 @@ public class Ant {
   private Double lastMeal;
   private Date dateMeal;
   public State state;
-  String s;
   
+  /**
+   * Ant constructor.
+   */
   public Ant() {
     this.antId++;
     this.dateStart = new Date();
@@ -80,13 +83,9 @@ public class Ant {
   }
   
   public void changeState() {
-      this.state = new Adult(new Worker());
+    this.state = new Adult(new Worker());
   }
-  
-//  public Role getRole() {
-//    this.state.g
-//  }
-  
+    
 //  private Date addDaysToBirthday(int nbDays) {
 //    Calendar c = Calendar.getInstance(); 
 //    c.setTime(this.dateStart);
