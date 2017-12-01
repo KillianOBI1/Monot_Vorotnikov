@@ -9,4 +9,8 @@ public class Prince extends Role {
   public void fly() {
     
   }
+  
+  public void embryonate() {
+    
+  }
 }
