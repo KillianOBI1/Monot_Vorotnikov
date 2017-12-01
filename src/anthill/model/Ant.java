@@ -73,7 +73,6 @@ public class Ant {
   
   public State getState() {
     return this.state;
-<<<<<<< HEAD
   }
   
   public String getStateString() {
@@ -95,9 +94,5 @@ public class Ant {
 //    Date newDate = c.getTime();
 //    return newDate;
 //  }
-=======
-  } 
-  
-  
->>>>>>> refs/remotes/origin/master
+
 }

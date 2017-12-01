@@ -24,9 +24,5 @@ public class Adult extends State {
   public Role getRole() {
     return this.role;
   }
-  
-  Role getRole() {
-    return r;
-  }
 
 }
