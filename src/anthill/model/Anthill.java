@@ -16,7 +16,7 @@ public class Anthill {
    * Anthill constructor.
    * @param q the Queen the Ant queen create the anthill.
    */
-  public Anthill(Queen q) {
+  public Anthill(Ant queen) {
     nbMaggot = 0;
     nbChrysalis = 0;
     nbEgg = 0;
@@ -24,7 +24,7 @@ public class Anthill {
     nbPrince = 0;
     nbPrincess = 0;
     listAnt = new ArrayList<Ant>();
-    //listAnt.add(q);
+    listAnt.add(queen);
   }
   
   

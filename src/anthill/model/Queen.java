@@ -20,7 +20,7 @@ public class Queen extends Role {
     return new Ant();
   }
   
-  public Anthill createAnthill() {
-    return new Anthill(this);
+  public Anthill createAnthill(Ant a) {
+    return new Anthill(a);
   }
 }
