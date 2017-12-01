@@ -1,6 +1,7 @@
 package anthill.model;
 
 public class Adult extends State {
+<<<<<<< HEAD
   Role role;
   
   String state;
@@ -9,6 +10,14 @@ public class Adult extends State {
     this.role = role;
   }
 
+=======
+  Role r;
+  
+  Adult(){
+    super();
+  }
+  
+>>>>>>> refs/remotes/origin/master
   @Override
   public String getState() {
     return this.state;
@@ -16,6 +25,9 @@ public class Adult extends State {
   
   public Role getRole() {
     return this.role;
+  }
+  Role getRole() {
+    return r;
   }
 
 }

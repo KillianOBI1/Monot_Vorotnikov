@@ -9,7 +9,11 @@ public class Soldier extends Role {
   public void defend() {
     
   }
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> refs/remotes/origin/master
   @Override
   public void move() {
     // TODO Auto-generated method stub

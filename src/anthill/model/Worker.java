@@ -12,9 +12,6 @@ public class Worker extends Role {
   void selfFeed(Ant a, double weight) {
     a.setFoodQtty(weight);
   }
-  
-   
-  
   void feedOther(List<Ant> la, int id, double weight) {
     Egg e = new Egg();
     Chrysalis c = new Chrysalis();
@@ -30,7 +27,11 @@ public class Worker extends Role {
   void fight(Prey p) {
     //TODO
   }
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> refs/remotes/origin/master
   @Override
   public void move() {
     // TODO Auto-generated method stub

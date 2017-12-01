@@ -20,8 +20,14 @@ public class Queen extends Role {
     return new Ant();
   }
   
-  public Anthill createAnthill() {
-    return new Anthill(this);
+  public Anthill createAnthill(Ant a) {
+    return new Anthill(a);
+  }
+
+  @Override
+  public void move() {
+    // TODO Auto-generated method stub
+    
   }
   
   @Override
