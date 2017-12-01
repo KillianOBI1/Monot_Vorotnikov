@@ -7,10 +7,10 @@ public class Prince extends Role {
   }
   
   public void fly() {
-    
+    //TODO
   }
   
-  public void embryonate() {
-    
+  public void embryonate(Ant a) {
+    //TODO
   }
 }
