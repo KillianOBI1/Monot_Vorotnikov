@@ -16,9 +16,9 @@ public class Queen extends Role {
    * The Queen create an egg.
    * @return Egg an offspring
    */
-  /*public Egg createEgg() {
+  public Ant createEgg() {
     return new Ant();
-  }*/
+  }
   
   public Anthill createAnthill() {
     return new Anthill(this);
