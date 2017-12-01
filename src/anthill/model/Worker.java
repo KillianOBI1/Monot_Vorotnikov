@@ -18,10 +18,10 @@ public class Worker extends Role {
   }
   
   void clean() {
-    
+    //TODO
   }
   
   void fight(Prey p) {
-    
+    //TODO
   }
 }
