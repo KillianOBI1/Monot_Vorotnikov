@@ -12,4 +12,9 @@ public class Maggot extends State {
     return this.state;
   }
 
+  @Override
+  public Role getRole() {
+    return null;
+  }
+
 }

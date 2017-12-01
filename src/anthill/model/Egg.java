@@ -10,4 +10,7 @@ public class Egg extends State {
   public String getState() {
     return this.state;
   }
+
+  @Override
+  public Role getRole() {return null;}
 }

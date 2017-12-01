@@ -13,4 +13,10 @@ public class Prince extends Role {
   public void embryonate(Ant a) {
     //TODO
   }
+
+  @Override
+  public void move() {
+    // TODO Auto-generated method stub
+    
+  }
 }

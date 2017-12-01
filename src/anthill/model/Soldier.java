@@ -9,4 +9,10 @@ public class Soldier extends Role {
   public void defend() {
     
   }
+  
+  @Override
+  public void move() {
+    // TODO Auto-generated method stub
+    
+  }
 }

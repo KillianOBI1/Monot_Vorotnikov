@@ -1,19 +1,15 @@
 package anthill.model;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 public class Ant {
   private int antId = 0;
-  private Date newDate;
   private Date dateStart;
   private Date dateEnd;
   private int weight;
   private Double foodQtty;
   private Double lastMeal;
   private Date dateMeal;
-  private SimpleDateFormat dateFormat;
   public State state;
   String s;
   
@@ -24,11 +20,7 @@ public class Ant {
     this.weight = 0;
     this.foodQtty = 0.0;
     this.lastMeal = 0.0;
-    this.state = new Egg();
-    this.newDate = new Date();
-    this.dateFormat = new SimpleDateFormat("dd MM yyyy");
-    s = dateFormat.format(dateStart);
-        
+    this.state = new Egg();     
   }
   
   public void setWeight(int weight) {
@@ -88,14 +80,18 @@ public class Ant {
   }
   
   public void changeState() {
-      this.state = new Maggot();
+      this.state = new Adult(new Worker());
   }
   
-  private Date addDaysToBirthday(int nbDays) {
-    Calendar c = Calendar.getInstance(); 
-    c.setTime(this.dateStart);
-    c.add(Calendar.DATE, nbDays);
-    Date newDate = c.getTime();
-    return newDate;
-  }
+//  public Role getRole() {
+//    this.state.g
+//  }
+  
+//  private Date addDaysToBirthday(int nbDays) {
+//    Calendar c = Calendar.getInstance(); 
+//    c.setTime(this.dateStart);
+//    c.add(Calendar.DATE, nbDays);
+//    Date newDate = c.getTime();
+//    return newDate;
+//  }
 }

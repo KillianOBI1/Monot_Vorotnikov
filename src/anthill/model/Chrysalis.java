@@ -12,4 +12,9 @@ public class Chrysalis extends State {
     return this.state;
   }
 
+  @Override
+  public Role getRole() {
+    return null;
+  }
+
 }
