@@ -97,5 +97,10 @@ public class Ant {
 //  }
 =======
   } 
+<<<<<<< HEAD
+>>>>>>> branch 'master' of https://github.com/KillianOBI1/Monot_Vorotnikov.git
+=======
+  
+  
 >>>>>>> branch 'master' of https://github.com/KillianOBI1/Monot_Vorotnikov.git
 }
