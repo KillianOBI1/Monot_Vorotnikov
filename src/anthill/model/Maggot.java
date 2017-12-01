@@ -1,11 +1,15 @@
 package anthill.model;
 
 public class Maggot extends State {
+  
+  String state;
+  Maggot() {
+    this.state = "Egg";
+  }
 
   @Override
-  public void changeState() {
-    // TODO Auto-generated method stub
-    
+  public String getState() {
+    return this.state;
   }
 
 }

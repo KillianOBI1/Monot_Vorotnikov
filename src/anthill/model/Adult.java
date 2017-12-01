@@ -1,11 +1,16 @@
 package anthill.model;
 
 public class Adult extends State {
-  Role r;
+  Role role;
+  
+  String state;
+  Adult() {
+    this.state = "Egg";
+  }
+
   @Override
-  public void changeState() {
-    // TODO Auto-generated method stub
-    
+  public String getState() {
+    return this.state;
   }
 
 }
