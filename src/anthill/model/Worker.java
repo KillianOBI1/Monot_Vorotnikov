@@ -13,8 +13,14 @@ public class Worker extends Role {
     a.setFoodQtty(weight);
   }
   
+   
+  
   void feedOther(List<Ant> la, int id, double weight) {
-    la.get(id).setFoodQtty(weight);
+    Egg e = new Egg();
+    Chrysalis c = new Chrysalis();
+    if(!la.get(id).getState().getClass().equals(e.getClass())||!la.get(id).getState().getClass().equals(c.getClass())) {
+      la.get(id).setFoodQtty(weight);
+    }
   }
   
   void clean() {
