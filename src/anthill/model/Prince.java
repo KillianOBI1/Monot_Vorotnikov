@@ -19,10 +19,4 @@ public class Prince extends Role {
     // TODO Auto-generated method stub
     
   }
-
-  @Override
-  public void move() {
-    // TODO Auto-generated method stub
-    
-  }
 }
