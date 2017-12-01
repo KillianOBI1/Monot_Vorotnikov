@@ -1,5 +1,26 @@
 package anthill.model;
 
-public class Queen {
+import sun.util.calendar.LocalGregorianCalendar.Date;
 
+@SuppressWarnings("unused")
+public class Queen extends Role {
+  boolean isReign;
+  boolean isPregnant;
+  
+  public Queen() {
+    isReign = true;
+    isPregnant = true;
+  }
+  
+  /**
+   * The Queen create an egg.
+   * @return Egg an offspring
+   */
+  /*public Egg createEgg() {
+    return new Ant();
+  }*/
+  
+  public Anthill createAnthill() {
+    return new Anthill(this);
+  }
 }
