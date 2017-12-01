@@ -12,9 +12,6 @@ public class Worker extends Role {
   void selfFeed(Ant a, double weight) {
     a.setFoodQtty(weight);
   }
-  
-   
-  
   void feedOther(List<Ant> la, int id, double weight) {
     Egg e = new Egg();
     Chrysalis c = new Chrysalis();

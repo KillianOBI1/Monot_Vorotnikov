@@ -73,6 +73,7 @@ public class Ant {
   
   public State getState() {
     return this.state;
+<<<<<<< HEAD
   }
   
   public String getStateString() {
@@ -94,4 +95,7 @@ public class Ant {
 //    Date newDate = c.getTime();
 //    return newDate;
 //  }
+=======
+  } 
+>>>>>>> branch 'master' of https://github.com/KillianOBI1/Monot_Vorotnikov.git
 }
