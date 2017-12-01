@@ -9,6 +9,7 @@ public class Worker extends Role {
   
   void selfFeed(int weight) {
     //this.foodQtty += weight;
+    super.
   }
   
   void feedOther(int id, int weight) {
