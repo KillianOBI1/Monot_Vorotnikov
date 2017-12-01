@@ -27,4 +27,10 @@ public class Worker extends Role {
   void fight(Prey p) {
     //TODO
   }
+
+  @Override
+  public void move() {
+    // TODO Auto-generated method stub
+    
+  }
 }

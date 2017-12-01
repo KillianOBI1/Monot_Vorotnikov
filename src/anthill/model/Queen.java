@@ -23,4 +23,10 @@ public class Queen extends Role {
   public Anthill createAnthill(Ant a) {
     return new Anthill(a);
   }
+
+  @Override
+  public void move() {
+    // TODO Auto-generated method stub
+    
+  }
 }
