@@ -10,10 +10,7 @@ public class Princess extends Role {
   public void fly() {
     
   }
-<<<<<<< HEAD
-=======
 
->>>>>>> refs/remotes/origin/master
   @Override
   public void move() {
     // TODO Auto-generated method stub

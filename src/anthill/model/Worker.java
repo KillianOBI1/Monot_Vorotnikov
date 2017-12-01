@@ -27,11 +27,7 @@ public class Worker extends Role {
   void fight(Prey p) {
     //TODO
   }
-<<<<<<< HEAD
-  
-=======
 
->>>>>>> refs/remotes/origin/master
   @Override
   public void move() {
     // TODO Auto-generated method stub
