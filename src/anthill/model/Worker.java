@@ -27,11 +27,7 @@ public class Worker extends Role {
   void fight(Prey p) {
     //TODO
   }
-<<<<<<< HEAD
-  
-=======
 
->>>>>>> branch 'master' of https://github.com/KillianOBI1/Monot_Vorotnikov.git
   @Override
   public void move() {
     // TODO Auto-generated method stub

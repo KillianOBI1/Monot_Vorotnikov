@@ -98,9 +98,15 @@ public class Ant {
 =======
   } 
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> branch 'master' of https://github.com/KillianOBI1/Monot_Vorotnikov.git
 =======
   
   
 >>>>>>> branch 'master' of https://github.com/KillianOBI1/Monot_Vorotnikov.git
+=======
+  
+  
+>>>>>>> refs/remotes/origin/master
+>>>>>>> refs/remotes/origin/Nikolai_branch
 }
