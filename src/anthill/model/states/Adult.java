@@ -1,4 +1,6 @@
-package anthill.model;
+package anthill.model.states;
+
+import anthill.model.roles.Role;
 
 public class Adult extends State {
 

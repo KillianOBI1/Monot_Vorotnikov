@@ -1,7 +1,11 @@
 package anthill.model;
 
-import java.util.Calendar;
 import java.util.Date;
+
+import anthill.model.roles.Worker;
+import anthill.model.states.Adult;
+import anthill.model.states.Egg;
+import anthill.model.states.State;
 
 public class Ant {
   private int antId = 0;

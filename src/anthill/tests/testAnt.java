@@ -1,9 +1,9 @@
 package anthill.tests;
 
-import anthill.model.Adult;
 import anthill.model.Ant;
-import anthill.model.State;
-import anthill.model.Worker;
+import anthill.model.roles.Worker;
+import anthill.model.states.Adult;
+import anthill.model.states.State;
 
 public class testAnt {
   public static void main(String... args) {

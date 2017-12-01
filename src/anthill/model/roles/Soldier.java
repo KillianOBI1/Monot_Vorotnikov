@@ -1,4 +1,4 @@
-package anthill.model;
+package anthill.model.roles;
 
 public class Soldier extends Role {
   

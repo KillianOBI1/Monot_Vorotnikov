@@ -1,5 +1,7 @@
-package anthill.model;
+package anthill.model.roles;
 
+import anthill.model.Ant;
+import anthill.model.Anthill;
 import sun.util.calendar.LocalGregorianCalendar.Date;
 
 @SuppressWarnings("unused")

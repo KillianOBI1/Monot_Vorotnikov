@@ -1,4 +1,6 @@
-package anthill.model;
+package anthill.model.roles;
+
+import anthill.model.Ant;
 
 public class Prince extends Role {
   

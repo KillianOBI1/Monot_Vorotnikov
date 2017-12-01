@@ -1,8 +1,10 @@
-package anthill.model;
+package anthill.model.states;
+
+import anthill.model.roles.Role;
 
 public class Egg extends State {
   String state;
-  Egg() {
+  public Egg() {
     this.state = "Egg";
   }
   

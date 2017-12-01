@@ -1,9 +1,11 @@
-package anthill.model;
+package anthill.model.states;
 
-public class Maggot extends State {
-  
+import anthill.model.roles.Role;
+
+public class Chrysalis extends State {
+
   String state;
-  Maggot() {
+  public Chrysalis() {
     this.state = "Egg";
   }
 
