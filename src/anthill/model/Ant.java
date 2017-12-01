@@ -40,7 +40,7 @@ public class Ant {
   }
   
   public void setFoodQtty(Double amountOfFood) {
-    this.foodQtty = amountOfFood;
+    this.foodQtty += amountOfFood;
   }
   
   public void setLastMeal(Double lastMeal) {
