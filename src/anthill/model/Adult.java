@@ -1,9 +1,11 @@
 package anthill.model;
 
-public class Egg extends State {
-  
+public class Adult extends State {
+
   @Override
   public void changeState() {
     // TODO Auto-generated method stub
+    
   }
+
 }
