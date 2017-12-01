@@ -72,5 +72,5 @@ public class Ant {
   
   public State getState() {
     return this.state;
-  }
+  } 
 }

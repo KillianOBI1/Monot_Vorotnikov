@@ -7,5 +7,8 @@ public class Adult extends State {
     // TODO Auto-generated method stub
     
   }
+  Role getRole() {
+    return r;
+  }
 
 }

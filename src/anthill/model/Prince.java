@@ -11,6 +11,5 @@ public class Prince extends Role {
   }
   
   public void embryonate(Ant a) {
-    //TODO
   }
 }
