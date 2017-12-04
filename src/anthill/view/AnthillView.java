@@ -14,6 +14,8 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.MatteBorder;
 
 public class AnthillView {
 
@@ -80,6 +82,12 @@ public class AnthillView {
     JPanel actionField = new Grille();
     actionField.setBackground(Color.WHITE);
     frame.getContentPane().add(actionField, BorderLayout.CENTER);
+    
+    JPanel panelLeft = new JPanel();
+    frame.getContentPane().add(panelLeft, BorderLayout.WEST);
+    
+    JPanel panelRight = new JPanel();
+    frame.getContentPane().add(panelRight, BorderLayout.EAST);
   }
 
 }
