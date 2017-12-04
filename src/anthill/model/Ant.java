@@ -1,8 +1,10 @@
 package anthill.model;
 
+import anthill.iface.Observer;
 import anthill.model.states.Egg;
 import anthill.model.states.State;
 
+import java.util.Calendar;
 import java.util.Date;
 
 
@@ -49,7 +51,7 @@ public class Ant implements anthill.iface.Observable {
   public void setDateMeal(Date dateMeal) {
     this.dateMeal = dateMeal;
   }
-  
+
   public int getAntId() {
     return this.antId;
   }
@@ -87,16 +89,23 @@ public class Ant implements anthill.iface.Observable {
   }
 
   @Override
-  public void notifyToObserver() {
-    
+  public void notifyToObserver(Observer o) {
+    if (this.addDaysToBirthday(3).equals(new Date())) {
+      o.updateEggToMaggot(this);
+    }
   }
-  /*
-    private Date addDaysToBirthday(int nbDays) {
-      Calendar c = Calendar.getInstance(); 
-      c.setTime(this.dateStart);
-      c.add(Calendar.DATE, nbDays);
-      Date newDate = c.getTime();
-      return newDate;
-    }*/
+  /**
+   * Add nbDays to the birth date.
+   * @param nbDays to add
+   * @return the new date
+   */
+  
+  public Date addDaysToBirthday(int nbDays) {
+    Calendar c = Calendar.getInstance(); 
+    c.setTime(this.dateStart);
+    c.add(Calendar.DATE, nbDays);
+    Date newDate = c.getTime();
+    return newDate;
+  }
   
 }
