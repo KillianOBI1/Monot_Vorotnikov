@@ -1,4 +1,4 @@
-package anthill.iFace;
+package anthill.iface;
 
 public interface Observer {
 

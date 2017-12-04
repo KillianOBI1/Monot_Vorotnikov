@@ -1,5 +1,5 @@
-package anthill.iFace;
+package anthill.iface;
 
 public interface Observable {
-
+  public void update();
 }
