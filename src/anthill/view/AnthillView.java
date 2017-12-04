@@ -2,7 +2,9 @@ package anthill.view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -77,8 +79,12 @@ public class AnthillView {
     lblStatus.setHorizontalAlignment(SwingConstants.LEFT);
     statusBar.add(lblStatus);
     
-    JPanel actionField = new Grid(10);
-    actionField.setBackground(Color.WHITE);
+    AntsWorld antsWorld = new AntsWorld(10);
+    JPanel actionField = antsWorld;
+    actionField.setBackground(Color.WHITE);        
+
+    antsWorld.add(new AntView(new Point(15, 15), new Dimension(9, 9)));
+    
     frame.getContentPane().add(actionField, BorderLayout.CENTER);
     
     JPanel panelLeft = new JPanel();

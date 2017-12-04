@@ -15,6 +15,7 @@ public class Ant {
   private Double foodQtty;
   private Double lastMeal;
   private Date dateMeal;
+  private int position;
   public State state;
   
   /**
@@ -27,6 +28,7 @@ public class Ant {
     this.weight = 0;
     this.foodQtty = 0.0;
     this.lastMeal = 0.0;
+    this.position = 0;
     this.state = new Egg();     
   }
   
@@ -86,8 +88,8 @@ public class Ant {
     return this.state.getState();
   }
   
-  public void changeState() {
-    this.state = new Adult(new Worker());
+  public int getPosition() {
+    return this.position;
   }
     
 //  private Date addDaysToBirthday(int nbDays) {
