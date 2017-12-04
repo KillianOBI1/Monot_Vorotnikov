@@ -90,13 +90,13 @@ public class Ant implements anthill.iface.Observable{
   public void notifyToObserver() {
     
   }
-      
-//  private Date addDaysToBirthday(int nbDays) {
-//    Calendar c = Calendar.getInstance(); 
-//    c.setTime(this.dateStart);
-//    c.add(Calendar.DATE, nbDays);
-//    Date newDate = c.getTime();
-//    return newDate;
-//  }
+  /*
+    private Date addDaysToBirthday(int nbDays) {
+      Calendar c = Calendar.getInstance(); 
+      c.setTime(this.dateStart);
+      c.add(Calendar.DATE, nbDays);
+      Date newDate = c.getTime();
+      return newDate;
+    }*/
   
 }

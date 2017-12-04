@@ -9,7 +9,7 @@ public class Prey {
   //define position
   
   /**
-   * Prey constructor
+   * Prey constructor.
    */
   public Prey() {
     //weight =
