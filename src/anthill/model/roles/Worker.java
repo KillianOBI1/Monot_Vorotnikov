@@ -25,7 +25,7 @@ public class Worker extends Role {
     }
   }
   
-  void clean() {
+  public void clean() {
     //TODO
   }
   
