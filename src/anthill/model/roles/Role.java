@@ -11,9 +11,7 @@ public abstract class Role {
    * @return A queen or null
    */
   public Queen ifQueen(Ant a) {
-    System.out.println(a.getState().getRole().getClass().getSimpleName());
     if (a.getState().getRole().getClass().getSimpleName().equals("Queen")) {
-      System.out.println("Hail the queen");
       return (Queen) a.state.getRole();
     }
     return null;
@@ -65,5 +63,9 @@ public abstract class Role {
       return (Princess) a.state.getRole();
     }
     return null;
+  }
+  
+  public String toString(Ant a) {
+    return a.getState().getRole().getClass().getSimpleName();
   }
 }

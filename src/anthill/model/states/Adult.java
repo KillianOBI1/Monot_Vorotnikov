@@ -9,7 +9,7 @@ public class Adult extends State {
   String state;
   
   public Adult(Role role) {
-    this.state = "maggot";
+    this.state = "Adult";
     this.role = role;
   }
 

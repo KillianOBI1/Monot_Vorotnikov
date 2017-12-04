@@ -85,11 +85,7 @@ public class Ant {
   public String getStateString() {
     return this.state.getState();
   }
-  
-  public void changeState() {
-    this.state = new Adult(new Worker());
-  }
-    
+      
 //  private Date addDaysToBirthday(int nbDays) {
 //    Calendar c = Calendar.getInstance(); 
 //    c.setTime(this.dateStart);
