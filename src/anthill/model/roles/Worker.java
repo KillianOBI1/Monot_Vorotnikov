@@ -14,22 +14,29 @@ public class Worker extends Role {
     super();
   }
   
-  void selfFeed(Ant a, double weight) {
+  public void selfFeed(Ant a, double weight) {
     a.setFoodQtty(weight);
   }
-  void feedOther(List<Ant> la, int id, double weight) {
+  /**
+   * Feed other Ant by id.
+   * @param la List of ants
+   * @param id id of the ant
+   * @param weight food avaible for the ant
+   */
+  
+  public void feedOther(List<Ant> la, int id, double weight) {
     Egg e = new Egg();
     Chrysalis c = new Chrysalis();
-    if(!la.get(id).getState().equals(e)||!la.get(id).getState().equals(c)) {
+    if (!la.get(id).getState().equals(e) || !la.get(id).getState().equals(c)) {
       la.get(id).setFoodQtty(weight);
     }
   }
   
-  void clean() {
+  public void clean() {
     //TODO
   }
   
-  void fight(Prey p) {
+  public void fight(Prey p) {
     //TODO
   }
 
