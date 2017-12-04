@@ -7,7 +7,7 @@ public class Soldier extends Role {
   }
   
   public void defend() {
-    
+    //TODO
   }
 
   @Override
