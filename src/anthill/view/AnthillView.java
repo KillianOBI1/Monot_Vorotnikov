@@ -1,6 +1,7 @@
 package anthill.view;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,8 +14,6 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
-import java.awt.Color;
-import javax.swing.border.MatteBorder;
 
 public class AnthillView {
 
@@ -48,7 +47,7 @@ public class AnthillView {
    */
   private void initialize() {
     frame = new JFrame();
-    frame.setBounds(100, 100, 800, 476);
+    frame.setBounds(100, 100, 800, 450);
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.getContentPane().setLayout(new BorderLayout(0, 0));
     
@@ -78,7 +77,7 @@ public class AnthillView {
     lblStatus.setHorizontalAlignment(SwingConstants.LEFT);
     statusBar.add(lblStatus);
     
-    JPanel actionField = new JPanel();
+    JPanel actionField = new Grille();
     actionField.setBackground(Color.WHITE);
     frame.getContentPane().add(actionField, BorderLayout.CENTER);
   }
