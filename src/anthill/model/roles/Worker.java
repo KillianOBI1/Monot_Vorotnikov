@@ -1,11 +1,11 @@
 package anthill.model.roles;
 
-import java.util.List;
-
 import anthill.model.Ant;
 import anthill.model.Prey;
 import anthill.model.states.Chrysalis;
 import anthill.model.states.Egg;
+
+import java.util.List;
 
 public class Worker extends Role {
   Double carry;

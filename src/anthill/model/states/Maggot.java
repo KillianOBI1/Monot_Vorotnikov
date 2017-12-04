@@ -6,7 +6,7 @@ public class Maggot extends State {
   
   String state;
   
-  Maggot() {
+  public Maggot() {
     this.state = "Maggot";
   }
 

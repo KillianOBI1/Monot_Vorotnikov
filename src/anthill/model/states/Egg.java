@@ -4,6 +4,7 @@ import anthill.model.roles.Role;
 
 public class Egg extends State {
   String state;
+  
   public Egg() {
     this.state = "Egg";
   }
@@ -14,5 +15,7 @@ public class Egg extends State {
   }
 
   @Override
-  public Role getRole() {return null;}
+  public Role getRole() {
+    return null;
+  }
 }

@@ -1,13 +1,15 @@
 package anthill.model;
 
-import java.util.Date;
-
-import anthill.model.roles.Worker;
-import anthill.model.states.Adult;
+import anthill.iface.Observer;
 import anthill.model.states.Egg;
 import anthill.model.states.State;
 
-public class Ant {
+import java.util.Calendar;
+import java.util.Date;
+
+
+
+public class Ant implements anthill.iface.Observable {
   private int antId = 0;
   private Date dateStart;
   private Date dateEnd;
@@ -15,7 +17,6 @@ public class Ant {
   private Double foodQtty;
   private Double lastMeal;
   private Date dateMeal;
-  private int position;
   public State state;
   
   /**
@@ -28,7 +29,6 @@ public class Ant {
     this.weight = 0;
     this.foodQtty = 0.0;
     this.lastMeal = 0.0;
-    this.position = 0;
     this.state = new Egg();     
   }
   
@@ -51,7 +51,7 @@ public class Ant {
   public void setDateMeal(Date dateMeal) {
     this.dateMeal = dateMeal;
   }
-  
+
   public int getAntId() {
     return this.antId;
   }
@@ -87,17 +87,25 @@ public class Ant {
   public String getStateString() {
     return this.state.getState();
   }
-  
-  public int getPosition() {
-    return this.position;
+
+  @Override
+  public void notifyToObserver(Observer o) {
+    if (this.addDaysToBirthday(3).equals(new Date())) {
+      o.updateEggToMaggot(this);
+    }
   }
-    
-//  private Date addDaysToBirthday(int nbDays) {
-//    Calendar c = Calendar.getInstance(); 
-//    c.setTime(this.dateStart);
-//    c.add(Calendar.DATE, nbDays);
-//    Date newDate = c.getTime();
-//    return newDate;
-//  }
+  /**
+   * Add nbDays to the birth date.
+   * @param nbDays to add
+   * @return the new date
+   */
+  
+  public Date addDaysToBirthday(int nbDays) {
+    Calendar c = Calendar.getInstance(); 
+    c.setTime(this.dateStart);
+    c.add(Calendar.DATE, nbDays);
+    Date newDate = c.getTime();
+    return newDate;
+  }
   
 }
