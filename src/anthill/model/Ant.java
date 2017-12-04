@@ -1,13 +1,13 @@
 package anthill.model;
 
-import java.util.Date;
-
-import anthill.model.roles.Worker;
-import anthill.model.states.Adult;
 import anthill.model.states.Egg;
 import anthill.model.states.State;
 
-public class Ant implements anthill.iface.Observable{
+import java.util.Date;
+
+
+
+public class Ant implements anthill.iface.Observable {
   private int antId = 0;
   private Date dateStart;
   private Date dateEnd;
