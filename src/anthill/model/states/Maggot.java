@@ -5,6 +5,7 @@ import anthill.model.roles.Role;
 public class Maggot extends State {
   
   String state;
+  
   Maggot() {
     this.state = "Maggot";
   }

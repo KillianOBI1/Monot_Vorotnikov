@@ -5,6 +5,7 @@ import anthill.model.roles.Role;
 public class Chrysalis extends State {
 
   String state;
+  
   public Chrysalis() {
     this.state = "Chrysalis";
   }
