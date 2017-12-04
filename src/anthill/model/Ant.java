@@ -7,7 +7,7 @@ import anthill.model.states.Adult;
 import anthill.model.states.Egg;
 import anthill.model.states.State;
 
-public class Ant {
+public class Ant implements anthill.iface.Observable{
   private int antId = 0;
   private Date dateStart;
   private Date dateEnd;
@@ -84,6 +84,11 @@ public class Ant {
   
   public String getStateString() {
     return this.state.getState();
+  }
+
+  @Override
+  public void notifyToObserver() {
+    
   }
       
 //  private Date addDaysToBirthday(int nbDays) {
