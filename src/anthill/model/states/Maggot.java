@@ -6,7 +6,7 @@ public class Maggot extends State {
   
   String state;
   Maggot() {
-    this.state = "Egg";
+    this.state = "Maggot";
   }
 
   @Override

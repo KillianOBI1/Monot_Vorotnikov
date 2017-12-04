@@ -6,7 +6,7 @@ public class Chrysalis extends State {
 
   String state;
   public Chrysalis() {
-    this.state = "Egg";
+    this.state = "Chrysalis";
   }
 
   @Override
