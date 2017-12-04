@@ -13,6 +13,8 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+import java.awt.Color;
+import javax.swing.border.MatteBorder;
 
 public class AnthillView {
 
@@ -75,6 +77,10 @@ public class AnthillView {
     JLabel lblStatus = new JLabel("Status :");
     lblStatus.setHorizontalAlignment(SwingConstants.LEFT);
     statusBar.add(lblStatus);
+    
+    JPanel actionField = new JPanel();
+    actionField.setBackground(Color.WHITE);
+    frame.getContentPane().add(actionField, BorderLayout.CENTER);
   }
 
 }
