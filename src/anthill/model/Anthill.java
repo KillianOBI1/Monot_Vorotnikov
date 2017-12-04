@@ -14,7 +14,7 @@ public class Anthill {
   
   /**
    * Anthill constructor.
-   * @param q the Queen the Ant queen create the anthill.
+   * @param queen the Queen the Ant queen create the anthill.
    */
   public Anthill(Ant queen) {
     nbMaggot = 0;
