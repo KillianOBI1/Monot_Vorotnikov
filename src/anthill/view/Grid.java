@@ -5,10 +5,18 @@ import java.awt.Graphics;
 
 import javax.swing.JPanel;
 
-public class Grille extends JPanel {
+public class Grid extends JPanel {
   
   private static final long serialVersionUID = 1L;
-
+  private int grilleSize;
+  
+  /**
+   * @param gsize - size of a grid cell. 
+   */
+  public Grid(int gsize) {
+    this.grilleSize = gsize;
+  }
+  
   /**
    * @see javax.swing.JComponent#paint(java.awt.Graphics).
    */
@@ -17,8 +25,8 @@ public class Grille extends JPanel {
     Color c = g.getColor();
     g.setColor(Color.LIGHT_GRAY);
     
-    for (int x = 0; x < this.getWidth(); x += 10) {
-      for (int y = 0; y < this.getHeight(); y += 10) {
+    for (int x = 0; x < this.getWidth(); x += this.grilleSize) {
+      for (int y = 0; y < this.getHeight(); y += this.grilleSize) {
         g.drawLine(x, y, x, this.getHeight());
         g.drawLine(x, y, this.getWidth(), y);
       }

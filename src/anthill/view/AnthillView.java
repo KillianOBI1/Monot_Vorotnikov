@@ -14,8 +14,6 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
-import javax.swing.border.EtchedBorder;
-import javax.swing.border.MatteBorder;
 
 public class AnthillView {
 
@@ -79,7 +77,7 @@ public class AnthillView {
     lblStatus.setHorizontalAlignment(SwingConstants.LEFT);
     statusBar.add(lblStatus);
     
-    JPanel actionField = new Grille();
+    JPanel actionField = new Grid(10);
     actionField.setBackground(Color.WHITE);
     frame.getContentPane().add(actionField, BorderLayout.CENTER);
     
