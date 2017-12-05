@@ -1,5 +1,7 @@
 package anthill.iface;
 
-public interface Visitable {
 
+
+public interface Visitable {
+  void accept(Visitor v);
 }
