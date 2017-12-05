@@ -19,7 +19,7 @@ class TestMove {
     queen.state = new Adult(new Queen());
     Anthill ah = new Anthill(queen);
 
-    Ant a = queen.getState().getRole().ifQueen(queen).createEgg();
+    Ant a = queen.getState().getRole().ifQueen(queen).createEgg(ah);
     ah.listAnt.add(a);
     ah.setEgg(1);
       

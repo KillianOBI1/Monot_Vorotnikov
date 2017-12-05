@@ -22,7 +22,7 @@ class TestEvolution {
     queen.state = new Adult(new Queen());
     Anthill ah = queen.getState().getRole().ifQueen(queen).createAnthill(queen);
     for (int i = 0 ; i < 100 ; i++) {
-      Ant a = queen.getState().getRole().ifQueen(queen).createEgg();
+      Ant a = queen.getState().getRole().ifQueen(queen).createEgg(ah);
       ah.listAnt.add(a);
       ah.setEgg(1);
     }

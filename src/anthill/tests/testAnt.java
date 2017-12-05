@@ -27,7 +27,7 @@ public class testAnt {
     Observer o = new Observer();
     State neW = new Adult(new Queen());
     Anthill ah = queen.getState().getRole().ifQueen(queen).createAnthill(queen);
-    Ant a = queen.getState().getRole().ifQueen(queen).createEgg();
+    Ant a = queen.getState().getRole().ifQueen(queen).createEgg(ah);
     ah.listAnt.add(a);
     Calendar cal = Calendar.getInstance();
     cal.set(2017, 10, 05);

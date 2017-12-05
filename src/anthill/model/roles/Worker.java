@@ -1,6 +1,7 @@
 package anthill.model.roles;
 
 import anthill.model.Ant;
+import anthill.model.Anthill;
 import anthill.model.Prey;
 import anthill.model.states.Chrysalis;
 import anthill.model.states.Egg;
@@ -10,15 +11,15 @@ import java.util.List;
 import java.util.Random;
 
 public class Worker extends Role {
-  Double carry;
+  Prey carry;
   
   public Worker() {
     super();
     position = new Point(15,15);
   }
   
-  public void selfFeed(Ant a, double weight) {
-    a.setFoodQtty(weight);
+  public void selfFeed(Ant a) {
+    a.setFoodQtty(this.carry.weight);
   }
   /**
    * Feed other Ant by id.
@@ -27,11 +28,14 @@ public class Worker extends Role {
    * @param weight food available for the ant
    */
   
-  public void feedOther(List<Ant> la, int id, double weight) {
+  public void feedOther(List<Ant> la, int id) {
     Egg e = new Egg();
     Chrysalis c = new Chrysalis();
     if (!la.get(id).getState().equals(e) || !la.get(id).getState().equals(c)) {
-      la.get(id).setFoodQtty(weight);
+      if (la.get(id).differenceBetweenTodayMeal() < 1) {
+        la.get(id).setFoodQtty(this.carry.weight);
+      }
+      
     }
   }
   
@@ -69,5 +73,13 @@ public class Worker extends Role {
   
   public void setPosition(int x, int y) {
     this.position = new Point(x,y);
+  }
+  
+  public void depose(Anthill ah) {
+    ah.meat.add(carry);
+  }
+  
+  public void getFood(Anthill ah) {
+    carry = ah.meat.get(ah.meat.size() - 1);
   }
 }
