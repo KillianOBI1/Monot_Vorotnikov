@@ -5,8 +5,9 @@ import java.awt.Point;
 public class Princess extends Role {
   boolean  isEmbryonate;
   
-  public Princess() {
+  public Princess(Point p) {
     isEmbryonate = false;
+    position = p;
   }
   
   public void fly() {

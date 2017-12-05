@@ -19,8 +19,9 @@ public class Visitor implements anthill.iface.Visitor {
     res += a.getFoodQtty() + " ";
     res += a.getDateMeal() + " ";
     if (a.getStateString().equals("Adult")) {
-      res += a.getState().getRole().getClass().getSimpleName();
+      res += a.getState().getRole().getClass().getSimpleName() + " ";
     }
+    res += a.getState().getRole().getPosition();
     System.out.println(res);
   }
 

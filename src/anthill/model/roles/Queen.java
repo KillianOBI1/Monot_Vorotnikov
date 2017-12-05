@@ -3,14 +3,24 @@ package anthill.model.roles;
 import anthill.model.Ant;
 import anthill.model.Anthill;
 import java.awt.Point;
+import java.util.Random;
 
 public class Queen extends Role {
   boolean isReign;
   boolean isPregnant;
   
+  /**
+   * Constructeur de la queen.
+   */
   public Queen() {
     isReign = true;
     isPregnant = true;
+    int min = 520;
+    int max = 575;
+    Random rand = new Random();
+    int x = rand.nextInt((max + 1) - 0) + 0;
+    int y = rand.nextInt((min + 1) - 0) + 0;
+    position = new Point(x,y);
   }
   
   /**
@@ -34,7 +44,6 @@ public class Queen extends Role {
 
   @Override
   public Point getPosition() {
-    // TODO Auto-generated method stub
-    return null;
+    return this.position;
   }
 }

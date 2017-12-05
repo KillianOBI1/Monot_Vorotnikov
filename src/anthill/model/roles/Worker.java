@@ -13,13 +13,19 @@ import java.util.Random;
 public class Worker extends Role {
   Prey carry;
   
-  public Worker() {
+  public Worker(Point p) {
     super();
-    position = new Point(15,15);
+    position = p;
   }
   
+  /**
+   * the worker feed herself.
+   * @param a the ant herself
+   */
   public void selfFeed(Ant a) {
-    a.setFoodQtty(this.carry.weight);
+    if (a.differenceBetweenTodayMeal() < 1 && carry != null) {
+      a.setFoodQtty(this.carry.weight);
+    }
   }
   
   /**
@@ -31,8 +37,9 @@ public class Worker extends Role {
     Egg e = new Egg();
     Chrysalis c = new Chrysalis();
     if (!la.get(id).getState().equals(e) || !la.get(id).getState().equals(c)) {
-      if (la.get(id).differenceBetweenTodayMeal() < 1) {
+      if (la.get(id).differenceBetweenTodayMeal() < 1 && carry != null) {
         la.get(id).setFoodQtty(this.carry.weight);
+        carry = null;
       }
       
     }

@@ -50,16 +50,16 @@ public class Observer implements anthill.iface.Observer {
       Role r;
       ah.setChrysalis(-1);
       if (((double)ah.getNbWorker() / (double)totalPop) < quotaWorker) {
-        r = new Worker();
+        r = new Worker(ah.getPosition());
         ah.setWorker(1);  
       } else if (((double)ah.getNbPrince() / (double)totalPop) < quotaPrince) {
-        r = new Prince();
+        r = new Prince(ah.getPosition());
         ah.setPrince(1);
       } else if (((double)ah.getNbSoldier() / (double)totalPop) < quotaSoldier) {
-        r = new Soldier();
+        r = new Soldier(ah.getPosition());
         ah.setSoldier(1);
       } else {
-        r = new Princess();
+        r = new Princess(ah.getPosition());
         ah.setPrincess(1);
       }
       totalPop ++;
