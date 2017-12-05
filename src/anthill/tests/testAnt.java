@@ -30,24 +30,13 @@ public class testAnt {
     Ant a = queen.getState().getRole().ifQueen(queen).createEgg();
     ah.listAnt.add(a);
     Calendar cal = Calendar.getInstance();
-    cal.set(2017, 11, 02);
-    System.out.println(cal.getTime());
-    a.setDateStart(cal.getTime());
-    System.out.println(a.differenceBetweenBirthToday());
-    a.notifyToObserver(o, ah);
-    System.out.println(a.getStateString());
-    cal.set(2017, 10, 22);
-    System.out.println(cal.getTime());
-    a.setDateStart(cal.getTime());
-    System.out.println(a.differenceBetweenBirthToday());
-    a.notifyToObserver(o, ah);
-    System.out.println(a.getStateString());
     cal.set(2017, 10, 05);
     System.out.println(cal.getTime());
     a.setDateStart(cal.getTime());
-    System.out.println(a.differenceBetweenBirthToday());
-    a.notifyToObserver(o, ah);
-    System.out.println(a.getStateString());
+    a.notifyToObserverEvol(o, ah);
+    a.notifyToObserverEvol(o, ah);
+    a.notifyToObserverEvol(o, ah);
+    System.out.println(a.getState().getRole());
     System.out.println(neW.getRole().getClass().getSimpleName());
     queen.getState().getRole().ifQueen(queen);
   }
