@@ -6,4 +6,6 @@ public interface Observable {
   public void notifyToObserverEvol(Observer o, Anthill ah);
   
   public void notifyToObserverDeath(Observer o, Anthill ah);
+
+  void notifyToObserverFood(Observer o);
 }

@@ -11,6 +11,10 @@ import anthill.model.states.Adult;
 import anthill.model.states.Chrysalis;
 import anthill.model.states.Maggot;
 
+import java.util.Date;
+
+
+
 public class Observer implements anthill.iface.Observer {
   final double quotaWorker = 0.7;
   final double quotaSoldier = 0.20;
@@ -23,38 +27,43 @@ public class Observer implements anthill.iface.Observer {
   }
   
   @Override
-  public void updateEggToMaggot(Ant egg) {
-    if (egg.getStateString().equals("Egg")) {
-      egg.state = new Maggot();
+  public void updateEggToMaggot(Anthill ah, int id) {
+    if (ah.listAnt.get(id).getStateString().equals("Egg")) {
+      ah.listAnt.get(id).state = new Maggot();
+      ah.setMaggot(1);
+      ah.setEgg(-1);
     }
   }
 
   @Override
-  public void updateMaggotToChrysalis(Ant maggot) {
-    if (maggot.getStateString().equals("Maggot")) {
-      maggot.state = new Chrysalis();
+  public void updateMaggotToChrysalis(Anthill ah, int id) {
+    if (ah.listAnt.get(id).getStateString().equals("Maggot")) {
+      ah.listAnt.get(id).state = new Chrysalis();
+      ah.setMaggot(-1);
+      ah.setChrysalis(1);
     }
   }
 
   @Override
-  public void updateChrysalisToAdult(Ant chrysalis, Anthill ah) {
-    if (chrysalis.getState().getRole() == null && chrysalis.getStateString().equals("Chrysalis")) {
+  public void updateChrysalisToAdult(Anthill ah, int id) {
+    if (ah.listAnt.get(id).getState().getRole() == null && ah.listAnt.get(id).getStateString().equals("Chrysalis")) {
       Role r;
+      ah.setChrysalis(-1);
       if (((double)ah.getNbWorker() / (double)totalPop) < quotaWorker) {
         r = new Worker();
-        ah.setWorker();
+        ah.setWorker(1);  
       } else if (((double)ah.getNbPrince() / (double)totalPop) < quotaPrince) {
         r = new Prince();
-        ah.setPrince();
+        ah.setPrince(1);
       } else if (((double)ah.getNbSoldier() / (double)totalPop) < quotaSoldier) {
         r = new Soldier();
-        ah.setSoldier();
+        ah.setSoldier(1);
       } else {
         r = new Princess();
-        ah.setPrincess();
+        ah.setPrincess(1);
       }
       totalPop ++;
-      chrysalis.state = new Adult(r);
+      ah.listAnt.get(id).state = new Adult(r);
     }
    
   }
@@ -62,7 +71,34 @@ public class Observer implements anthill.iface.Observer {
   @Override
   public void updateDeath(Ant dead, Anthill ah) {
     totalPop --;
-    
+    if (dead.getStateString().equals("Adult")) {
+      String role = dead.getState().getRole().getClass().getSimpleName();
+      switch (role) {
+        case "Queen":
+          break;
+        case "Worker":
+          ah.setWorker(-1);
+          break;
+        case "Soldier":
+          ah.setSoldier(-1);
+          break;
+        case "Prince":
+          ah.setPrince(-1);
+          break;
+        case "Princess":
+          ah.setPrincess(-1);
+          break;
+        default:
+          break;
+      }
+    } else {
+      ah.setMaggot(-1);
+    }
+    ah.listAnt.remove(dead.getAntId());
   }
 
+  @Override
+  public void updateFood(Ant feeded) {
+    feeded.setDateMeal(new Date());
+  }
 }

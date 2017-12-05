@@ -1,6 +1,7 @@
 package anthill.model;
 
 import anthill.iface.Observer;
+import anthill.iface.Visitor;
 import anthill.model.states.Egg;
 import anthill.model.states.State;
 
@@ -10,14 +11,13 @@ import java.util.Random;
 
 
 
-public class Ant implements anthill.iface.Observable {
+public class Ant implements anthill.iface.Observable, anthill.iface.Visitable {
   private static int antCompt = 0;
   private int antId;
   private Date dateStart;
   private Date dateEnd;
   private int weight;
   private Double foodQtty;
-  private Double lastMeal;
   private Date dateMeal;
   public State state;
   
@@ -25,13 +25,12 @@ public class Ant implements anthill.iface.Observable {
    * Ant constructor.
    */
   public Ant() {
-    this.antCompt++;
     this.antId = this.antCompt;
+    this.antCompt++;
     this.dateStart = new Date();
     this.dateEnd = whenIDie(antId);
     this.weight = 0;
     this.foodQtty = 0.0;
-    this.lastMeal = 0.0;
     this.state = new Egg();     
   }
 
@@ -46,10 +45,6 @@ public class Ant implements anthill.iface.Observable {
   
   public void setFoodQtty(Double amountOfFood) {
     this.foodQtty += amountOfFood;
-  }
-  
-  public void setLastMeal(Double lastMeal) {
-    this.lastMeal = lastMeal;
   }
   
   public void setDateMeal(Date dateMeal) {
@@ -76,10 +71,6 @@ public class Ant implements anthill.iface.Observable {
     return this.foodQtty;
   }
   
-  public Double getLastMeal() {
-    return this.lastMeal;
-  }
-  
   public Date getDateMeal() {
     return this.dateMeal;
   }
@@ -98,11 +89,11 @@ public class Ant implements anthill.iface.Observable {
     String stateS = "Maggot";//Second state 
     String stateT = "Chrysalis";//Third state
     if (this.differenceBetweenBirthToday() >= 3 && getStateString().equals(stateF)) {
-      o.updateEggToMaggot(this);
+      o.updateEggToMaggot(ah,this.antId);
     } else if (this.differenceBetweenBirthToday() >= 13 && getStateString().equals(stateS)) {
-      o.updateMaggotToChrysalis(this);
+      o.updateMaggotToChrysalis(ah,this.antId);
     } else if (this.differenceBetweenBirthToday() >= 30  && getStateString().equals(stateT)) {
-      o.updateChrysalisToAdult(this, ah);
+      o.updateChrysalisToAdult(ah,this.antId);
     }
   }
   /**
@@ -126,6 +117,11 @@ public class Ant implements anthill.iface.Observable {
   public long differenceBetweenTodayDeath() {
     Date d1 = new Date();
     return ((this.dateEnd.getTime() - d1.getTime()) / (1000 * 60 * 60 * 24));
+  }
+  
+  public long differenceBetweenTodayMeal() {
+    Date d2 = new Date();
+    return ((d2.getTime() - this.dateMeal.getTime()) / (1000 * 60 * 60 * 24));
   }
   
   /**
@@ -156,13 +152,21 @@ public class Ant implements anthill.iface.Observable {
   
   @Override
   public void notifyToObserverDeath(Observer o, Anthill ah) {
-    if (this.differenceBetweenTodayDeath() <= 0) {
+    if (this.differenceBetweenTodayDeath() <= 0 || this.differenceBetweenTodayMeal() >= 1) {
       o.updateDeath(this,ah);
-    } else if (this.differenceBetweenTodayDeath() >= 13) {
-      o.updateMaggotToChrysalis(this);
-    } else if (this.differenceBetweenTodayDeath() >= 30) {
-      o.updateChrysalisToAdult(this, ah);
     }
   }
   
+  @Override
+  public void notifyToObserverFood(Observer o) {
+    if (this.getFoodQtty() >= this.getWeight()) {
+      o.updateFood(this);
+    }
+  }
+
+
+  @Override
+  public void accept(Visitor v) {
+    v.visit(this);
+  }
 }

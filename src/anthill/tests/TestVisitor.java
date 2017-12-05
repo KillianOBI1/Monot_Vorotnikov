@@ -1,5 +1,6 @@
 package anthill.tests;
 
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
@@ -9,8 +10,9 @@ import anthill.model.Anthill;
 import anthill.model.roles.Queen;
 import anthill.model.states.Adult;
 import anthill.observer.Observer;
+import anthill.visitor.Visitor;
 
-class TestDeath {
+class TestVisitor {
 
   @Test
   void test() {
@@ -22,11 +24,20 @@ class TestDeath {
       ah.listAnt.add(a);
       ah.setEgg(1);
     }
-    System.out.println(ah.listAnt.size());
     Observer o = new Observer();
-    for (Ant e :ah.listAnt) {
-      System.out.println(e.getDateEnd() + " " + e.getAntId());
+    Visitor vi = new Visitor();
+    for (Ant a : ah.listAnt) {
+      o.updateEggToMaggot(ah,a.getAntId());
+      o.updateMaggotToChrysalis(ah,a.getAntId());
+      o.updateChrysalisToAdult(ah,a.getAntId());
     }
+   
+    ah.accept(vi);
+    assertTrue(ah.getNbWorker() == 70);
+    assertTrue(ah.getNbPrince() == 5);
+    assertTrue(ah.getNbSoldier() == 20);
+    assertTrue(ah.getNbPrincess() == 5);
+    assertTrue((ah.getNbPrince() + ah.getNbPrincess() + ah.getNbSoldier() + ah.getNbWorker() + 1) == 101);
   }
 
 }
