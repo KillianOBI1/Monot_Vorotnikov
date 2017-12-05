@@ -8,7 +8,9 @@ import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Calendar;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -21,8 +23,6 @@ import javax.swing.border.EmptyBorder;
 
 import anthill.model.Ant;
 import anthill.model.Anthill;
-import anthill.model.roles.Queen;
-import anthill.model.states.Adult;
 import anthill.observer.Observer;
 
 public class AnthillWorldView {
@@ -40,7 +40,6 @@ public class AnthillWorldView {
     int x = 0;
     int y = 0;
     Ant q = new Ant();
-    q.state = new Adult(new Queen());
     Anthill myAnthill = new Anthill(q);
     myAnthill.listAnt.add(new Ant());
     myAnthill.listAnt.add(new Ant());
