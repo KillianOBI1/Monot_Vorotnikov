@@ -13,8 +13,8 @@ public class AntView extends GraphicElement {
 
   @Override
   public void draw(Graphics g) {
-    g.setColor(Color.GREEN);
-    g.fillRect(bounds.x,bounds.y,bounds.height,bounds.width);
+    g.setColor(Color.GRAY);
+    g.fillOval(bounds.x,bounds.y,bounds.height,bounds.width);
   }
   
 }

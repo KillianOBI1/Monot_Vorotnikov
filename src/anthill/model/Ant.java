@@ -1,11 +1,12 @@
 package anthill.model;
 
+import java.awt.Point;
+import java.util.Calendar;
+import java.util.Date;
+
 import anthill.iface.Observer;
 import anthill.model.states.Egg;
 import anthill.model.states.State;
-
-import java.util.Calendar;
-import java.util.Date;
 
 
 
@@ -29,7 +30,7 @@ public class Ant implements anthill.iface.Observable {
     this.weight = 0;
     this.foodQtty = 0.0;
     this.lastMeal = 0.0;
-    this.state = new Egg();     
+    this.state = new Egg();
   }
   
   public void setWeight(int weight) {
@@ -87,7 +88,7 @@ public class Ant implements anthill.iface.Observable {
   public String getStateString() {
     return this.state.getState();
   }
-
+  
   @Override
   public void notifyToObserver(Observer o) {
     if (this.addDaysToBirthday(3).equals(new Date())) {

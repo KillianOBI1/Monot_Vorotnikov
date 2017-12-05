@@ -1,9 +1,15 @@
 package anthill.model.roles;
 
 import anthill.model.Ant;
+import java.awt.Point;
 
 public abstract class Role {
+  
+  public Point position;
+  
   public abstract void move();
+  
+  public abstract Point getPosition();
   
   /**
    * Verify if the ant is a queen and makes the function role accessible or not.
