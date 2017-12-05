@@ -24,16 +24,14 @@ class TestEvolution {
     for (int i = 0 ; i < 100 ; i++) {
       Ant a = queen.getState().getRole().ifQueen(queen).createEgg();
       ah.listAnt.add(a);
-      ah.setEgg();
+      ah.setEgg(1);
     }
     System.out.println(ah.listAnt.size());
     Observer o = new Observer();
     for (Ant a : ah.listAnt) {
-      o.updateEggToMaggot(a);
-      ah.setMaggot();
-      o.updateMaggotToChrysalis(a);
-      ah.setChrysalis();
-      o.updateChrysalisToAdult(a,ah);
+      o.updateEggToMaggot(ah,a.getAntId());
+      o.updateMaggotToChrysalis(ah,a.getAntId());
+      o.updateChrysalisToAdult(ah,a.getAntId());
       System.out.println(a.getAntId() + " " + a.getState().getRole().toString(a));
     }
     assertTrue(ah.getNbWorker() == 70);

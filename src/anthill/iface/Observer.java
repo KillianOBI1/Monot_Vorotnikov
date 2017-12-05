@@ -4,11 +4,11 @@ import anthill.model.Ant;
 import anthill.model.Anthill;
 
 public interface Observer {
-  public void updateEggToMaggot(Ant egg);
+  public void updateEggToMaggot(Anthill ah, int id);
   
-  public void updateMaggotToChrysalis(Ant maggot);
+  public void updateMaggotToChrysalis(Anthill ah, int id);
   
-  public void updateChrysalisToAdult(Ant chrysalis, Anthill ah);
+  public void updateChrysalisToAdult(Anthill ah, int id);
   
   public void updateDeath(Ant dead, Anthill ah);
   

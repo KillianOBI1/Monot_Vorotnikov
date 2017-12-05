@@ -27,38 +27,43 @@ public class Observer implements anthill.iface.Observer {
   }
   
   @Override
-  public void updateEggToMaggot(Ant egg) {
-    if (egg.getStateString().equals("Egg")) {
-      egg.state = new Maggot();
+  public void updateEggToMaggot(Anthill ah, int id) {
+    if (ah.listAnt.get(id).getStateString().equals("Egg")) {
+      ah.listAnt.get(id).state = new Maggot();
+      ah.setMaggot(1);
+      ah.setEgg(-1);
     }
   }
 
   @Override
-  public void updateMaggotToChrysalis(Ant maggot) {
-    if (maggot.getStateString().equals("Maggot")) {
-      maggot.state = new Chrysalis();
+  public void updateMaggotToChrysalis(Anthill ah, int id) {
+    if (ah.listAnt.get(id).getStateString().equals("Maggot")) {
+      ah.listAnt.get(id).state = new Chrysalis();
+      ah.setMaggot(-1);
+      ah.setChrysalis(1);
     }
   }
 
   @Override
-  public void updateChrysalisToAdult(Ant chrysalis, Anthill ah) {
-    if (chrysalis.getState().getRole() == null && chrysalis.getStateString().equals("Chrysalis")) {
+  public void updateChrysalisToAdult(Anthill ah, int id) {
+    if (ah.listAnt.get(id).getState().getRole() == null && ah.listAnt.get(id).getStateString().equals("Chrysalis")) {
       Role r;
+      ah.setChrysalis(-1);
       if (((double)ah.getNbWorker() / (double)totalPop) < quotaWorker) {
         r = new Worker();
-        ah.setWorker();
+        ah.setWorker(1);  
       } else if (((double)ah.getNbPrince() / (double)totalPop) < quotaPrince) {
         r = new Prince();
-        ah.setPrince();
+        ah.setPrince(1);
       } else if (((double)ah.getNbSoldier() / (double)totalPop) < quotaSoldier) {
         r = new Soldier();
-        ah.setSoldier();
+        ah.setSoldier(1);
       } else {
         r = new Princess();
-        ah.setPrincess();
+        ah.setPrincess(1);
       }
       totalPop ++;
-      chrysalis.state = new Adult(r);
+      ah.listAnt.get(id).state = new Adult(r);
     }
    
   }
@@ -72,22 +77,22 @@ public class Observer implements anthill.iface.Observer {
         case "Queen":
           break;
         case "Worker":
-          //ah.nbWorker--;
+          ah.setWorker(-1);
           break;
         case "Soldier":
-          //ah.nbSoldier--;
+          ah.setSoldier(-1);
           break;
         case "Prince":
-          //ah.nbPrince--;
+          ah.setPrince(-1);
           break;
         case "Princess":
-          //ah.nbPrincess--;
+          ah.setPrincess(-1);
           break;
         default:
           break;
       }
     } else {
-      //ah.nbMaggot--;
+      ah.setMaggot(-1);
     }
     ah.listAnt.remove(dead.getAntId());
   }

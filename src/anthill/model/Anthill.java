@@ -3,7 +3,9 @@ package anthill.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Anthill {
+import anthill.iface.Visitor;
+
+public class Anthill implements anthill.iface.Visitable {
   public List<Ant> listAnt;
   int nbMaggot;
   int nbChrysalis;
@@ -45,31 +47,48 @@ public class Anthill {
     return this.nbPrincess;
   }
   
-  public void setEgg() {
-    nbEgg++;
+  public int getEgg() {
+    return this.nbEgg;
   }
   
-  public void setMaggot() {
-    nbMaggot++;
+  public int getMaggot() {
+    return this.nbMaggot;
   }
   
-  public void setChrysalis() {
-    nbChrysalis++;
+  public int getChrysalis() {
+    return this.nbChrysalis;
   }
   
-  public void setWorker() {
-    nbWorker++;
+  public void setEgg(int i) {
+    nbEgg += i;
   }
   
-  public void setSoldier() {
-    nbSoldier++;
+  public void setMaggot(int i) {
+    nbMaggot += i;
   }
   
-  public void setPrince() {
-    nbPrince++;
+  public void setChrysalis(int i) {
+    nbChrysalis += i;
   }
   
-  public void setPrincess() {
-    nbPrincess++;
+  public void setWorker(int i) {
+    nbWorker += i;
+  }
+  
+  public void setSoldier(int i) {
+    nbSoldier += i;
+  }
+  
+  public void setPrince(int i) {
+    nbPrince += i;
+  }
+  
+  public void setPrincess(int i) {
+    nbPrincess += i;
+  }
+
+  @Override
+  public void accept(Visitor v) {
+    v.visit(this);
   }
 }
