@@ -59,4 +59,10 @@ public class Observer implements anthill.iface.Observer {
    
   }
 
+  @Override
+  public void updateDeath(Ant dead, Anthill ah) {
+    totalPop --;
+    
+  }
+
 }
