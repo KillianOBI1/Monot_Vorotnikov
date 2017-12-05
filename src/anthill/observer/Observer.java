@@ -1,5 +1,7 @@
 package anthill.observer;
 
+import java.util.Date;
+
 import anthill.model.Ant;
 import anthill.model.Anthill;
 import anthill.model.roles.Prince;
@@ -86,5 +88,12 @@ public class Observer implements anthill.iface.Observer {
       //ah.nbMaggot--;
     }
     ah.listAnt.remove(dead.getAntId());
+  }
+
+  @Override
+  public void updateFood(Ant feeded) {
+    if (feeded.getFoodQtty() >= feeded.getWeight()) {
+      feeded.setDateMeal(new Date());
+    }
   }
 }

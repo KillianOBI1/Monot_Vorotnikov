@@ -12,4 +12,6 @@ public interface Observer {
   
   public void updateDeath(Ant dead, Anthill ah);
   
+  public void updateFood(Ant feeded);
+  
 }

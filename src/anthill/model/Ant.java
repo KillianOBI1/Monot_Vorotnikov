@@ -166,4 +166,10 @@ public class Ant implements anthill.iface.Observable {
     }
   }
   
+  @Override
+  public void notifyToObserverFood(Observer o) {
+    if (this.getFoodQtty() >= this.getWeight()) {
+      o.updateFood(this);
+    }
+  }
 }
