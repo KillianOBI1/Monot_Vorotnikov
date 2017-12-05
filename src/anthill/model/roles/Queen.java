@@ -18,8 +18,8 @@ public class Queen extends Role {
     int min = 520;
     int max = 575;
     Random rand = new Random();
-    int x = rand.nextInt((max + 1) - 0) + 0;
-    int y = rand.nextInt((min + 1) - 0) + 0;
+    int x = (rand.nextInt(((max - (max % 5) + 1) - 0)));
+    int y = (rand.nextInt(((min - (min % 5) + 1) - 0)));
     position = new Point(x,y);
   }
   
