@@ -6,11 +6,13 @@ import anthill.model.states.State;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Random;
 
 
 
 public class Ant implements anthill.iface.Observable {
-  private int antId = 0;
+  private static int antCompt = 0;
+  private int antId;
   private Date dateStart;
   private Date dateEnd;
   private int weight;
@@ -23,15 +25,17 @@ public class Ant implements anthill.iface.Observable {
    * Ant constructor.
    */
   public Ant() {
-    this.antId++;
+    this.antCompt++;
+    this.antId = this.antCompt;
     this.dateStart = new Date();
-    this.dateEnd = new Date();
+    this.dateEnd = whenIDie(antId);
     this.weight = 0;
     this.foodQtty = 0.0;
     this.lastMeal = 0.0;
     this.state = new Egg();     
   }
-  
+
+    
   public void setWeight(int weight) {
     this.weight = weight;
   }
@@ -59,7 +63,7 @@ public class Ant implements anthill.iface.Observable {
   public Date getDateStart() {
     return this.dateStart;
   }
-  
+
   public Date getDateEnd() {
     return this.dateEnd;
   }
@@ -111,13 +115,38 @@ public class Ant implements anthill.iface.Observable {
     Calendar c = Calendar.getInstance(); 
     c.setTime(this.dateStart);
     c.add(Calendar.DATE, nbDays);
-    Date newDate = c.getTime();
-    return newDate;
+    return c.getTime();
   }
   
   public long differenceBetweenBirthToday() {
     Date d1 = new Date();
     return ((d1.getTime() - this.dateStart.getTime()) / (1000 * 60 * 60 * 24));
+  }
+  
+  /**
+   * Define when the ant die.
+   * @return The Darkest day of his life
+   */
+  public Date whenIDie(int id) {
+    if(id != 1) {
+      int min = 548;
+      int max = 912;
+      Random rand = new Random();
+      int nbDay = rand.nextInt((max + 1) - min) + min;
+      Calendar deathDate = Calendar.getInstance();
+      deathDate.setTime(this.dateStart);
+      deathDate.add(Calendar.DATE, nbDay);
+      return deathDate.getTime();
+    }
+    int min = 1460;
+    int max = 3650;
+    Random rand = new Random();
+    int nbDay = rand.nextInt((max + 1) - min) + min;
+    Calendar deathDate = Calendar.getInstance();
+    deathDate.setTime(this.dateStart);
+    deathDate.add(Calendar.DATE, nbDay);
+    return deathDate.getTime();
+    
   }
   
 }
