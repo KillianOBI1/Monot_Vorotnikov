@@ -1,6 +1,5 @@
 package anthill.model;
 
-import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +15,6 @@ public class Anthill implements anthill.iface.Visitable {
   int nbPrince;
   int nbPrincess;
   int nbSoldier;
-  Point position;
   
   /**
    * Anthill constructor.
