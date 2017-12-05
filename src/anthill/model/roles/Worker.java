@@ -7,13 +7,14 @@ import anthill.model.states.Egg;
 
 import java.awt.Point;
 import java.util.List;
+import java.util.Random;
 
 public class Worker extends Role {
   Double carry;
   
   public Worker() {
     super();
-    position = new Point(5,5);
+    position = new Point(115,115);
   }
   
   public void selfFeed(Ant a, double weight) {
@@ -46,9 +47,19 @@ public class Worker extends Role {
   public void move() {
     int x = this.position.x;
     int y = this.position.y;
-
-    this.position = new Point(x += 10, y);
-
+    Random r = new Random();
+    Boolean nextStepX = r.nextBoolean();
+    Boolean nextStepY = r.nextBoolean();
+    
+    if (nextStepX == true && nextStepY == false) { //if x==true & y==false stepRight
+      this.position = new Point(x += 10, y);
+    } else if (!nextStepX && !nextStepY) { //if x==false & y==false stepLeft
+      this.position = new Point(x -= 10, y);
+    } else if (!nextStepX && nextStepY) { //if x==false & y==true stepDown
+      this.position = new Point(x, y += 10);
+    } else if (!nextStepX && !nextStepY) { //if x==false & y==false stepDown
+      this.position = new Point(x, y -= 10);
+    }
   }
 
   @Override

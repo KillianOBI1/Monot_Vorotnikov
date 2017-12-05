@@ -39,8 +39,10 @@ class TestMove {
     
     Worker worker1 = (Worker) ah.listAnt.get(1).getState().getRole();
     System.out.println(worker1.getPosition());
-    worker1.move();
-    System.out.println(worker1.getPosition());
+    for (int i = 0; i < 10; i++) {
+      worker1.move();
+      System.out.println(worker1.getPosition());
+    }
   }
 
 }
