@@ -21,7 +21,7 @@ class TestMove {
 
     Ant a = queen.getState().getRole().ifQueen(queen).createEgg();
     ah.listAnt.add(a);
-    ah.setEgg();
+    ah.setEgg(1);
       
     System.out.println(ah.listAnt.size());
         

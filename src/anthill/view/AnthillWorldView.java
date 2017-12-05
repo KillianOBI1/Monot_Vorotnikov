@@ -42,6 +42,7 @@ public class AnthillWorldView {
     Ant q = new Ant();
     Anthill myAnthill = new Anthill(q);
     myAnthill.listAnt.add(new Ant());
+    myAnthill.listAnt.add(new Ant());
     Observer o = new Observer();
     
     for (Ant a : myAnthill.listAnt) {
@@ -52,7 +53,7 @@ public class AnthillWorldView {
       a.notifyToObserverEvol(o, myAnthill);
       a.notifyToObserverEvol(o, myAnthill);
       Point antPos = a.getState().getRole().getPosition();
-      antsWorld.addAnthill(new AnthillView(new Point(200,200), new Dimension(30,30)));
+      antsWorld.addAnthill(new AnthillView(new Point(205,205), new Dimension(30,30)));
       antsWorld.addAnt(new AntView(antPos, new Dimension(10, 10)));
     }
 
