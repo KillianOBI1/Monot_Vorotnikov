@@ -10,4 +10,6 @@ public interface Observer {
   
   public void updateChrysalisToAdult(Ant chrysalis, Anthill ah);
   
+  public void updateDeath(Ant dead, Anthill ah);
+  
 }

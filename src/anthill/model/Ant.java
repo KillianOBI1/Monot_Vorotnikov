@@ -93,7 +93,7 @@ public class Ant implements anthill.iface.Observable {
   }
 
   @Override
-  public void notifyToObserver(Observer o, Anthill ah) {
+  public void notifyToObserverEvol(Observer o, Anthill ah) {
     String stateF = "Egg";//First state
     String stateS = "Maggot";//Second state 
     String stateT = "Chrysalis";//Third state
@@ -106,7 +106,7 @@ public class Ant implements anthill.iface.Observable {
     }
   }
   /**
-   * Add nbDays to the birth date.
+   * Add nbDays to the birth https://openclassrooms.com/forum/sujet/compteur-d-instancesdate.
    * @param nbDays to add
    * @return the new date
    */
@@ -123,12 +123,17 @@ public class Ant implements anthill.iface.Observable {
     return ((d1.getTime() - this.dateStart.getTime()) / (1000 * 60 * 60 * 24));
   }
   
+  public long differenceBetweenTodayDeath() {
+    Date d1 = new Date();
+    return ((this.dateEnd.getTime() - d1.getTime()) / (1000 * 60 * 60 * 24));
+  }
+  
   /**
    * Define when the ant die.
    * @return The Darkest day of his life
    */
   public Date whenIDie(int id) {
-    if(id != 1) {
+    if (id != 1) {
       int min = 548;
       int max = 912;
       Random rand = new Random();
@@ -147,6 +152,17 @@ public class Ant implements anthill.iface.Observable {
     deathDate.add(Calendar.DATE, nbDay);
     return deathDate.getTime();
     
+  }
+  
+  @Override
+  public void notifyToObserverDeath(Observer o, Anthill ah) {
+    if (this.differenceBetweenTodayDeath() <= 0) {
+      o.updateDeath(this,ah);
+    } else if (this.differenceBetweenTodayDeath() >= 13) {
+      o.updateMaggotToChrysalis(this);
+    } else if (this.differenceBetweenTodayDeath() >= 30) {
+      o.updateChrysalisToAdult(this, ah);
+    }
   }
   
 }
