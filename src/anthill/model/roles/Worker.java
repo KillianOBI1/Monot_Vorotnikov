@@ -13,9 +13,9 @@ import java.util.Random;
 public class Worker extends Role {
   Prey carry;
   
-  public Worker() {
+  public Worker(Point p) {
     super();
-    position = new Point(15,15);
+    position = p;
   }
   
   /**

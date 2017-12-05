@@ -4,8 +4,9 @@ import java.awt.Point;
 
 public class Soldier extends Role {
   
-  public Soldier() {
+  public Soldier(Point p) {
     super();
+    position = p;
   }
   
   public void defend() {

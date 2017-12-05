@@ -6,8 +6,9 @@ import anthill.model.Ant;
 
 public class Prince extends Role {
   
-  public Prince() {
+  public Prince(Point p) {
     super();
+    position = p;
   }
   
   public void fly() {
