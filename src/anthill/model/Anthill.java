@@ -1,5 +1,6 @@
 package anthill.model;
 
+import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,12 +16,14 @@ public class Anthill implements anthill.iface.Visitable {
   int nbPrince;
   int nbPrincess;
   int nbSoldier;
+  Point position;
   
   /**
    * Anthill constructor.
    * @param queen the Queen the Ant queen create the anthill.
    */
   public Anthill(Ant queen) {
+    position = queen.state.getRole().getPosition();
     nbMaggot = 0;
     nbChrysalis = 0;
     nbEgg = 0;
@@ -30,6 +33,10 @@ public class Anthill implements anthill.iface.Visitable {
     nbPrincess = 0;
     listAnt = new ArrayList<Ant>();
     listAnt.add(queen);
+  }
+  
+  public Point getPosition() {
+    return this.position;
   }
   
   public int getNbWorker() {

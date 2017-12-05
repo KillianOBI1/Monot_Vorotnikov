@@ -24,6 +24,10 @@ import javax.swing.border.EmptyBorder;
 import anthill.model.Ant;
 import anthill.model.Anthill;
 import anthill.observer.Observer;
+import anthill.visitor.Visitor;
+import anthill.model.roles.Queen;
+import anthill.model.states.Adult;
+
 
 public class AnthillWorldView {
 
@@ -34,12 +38,15 @@ public class AnthillWorldView {
    */
   public static void main(String[] args) {
     Random r = new Random();
+    Visitor v = new Visitor();
     AntsWorld antsWorld = new AntsWorld(10);
     JPanel actionField = antsWorld;
     actionField.setBackground(Color.WHITE);    
     int x = 0;
     int y = 0;
     Ant q = new Ant();
+    q.state = new Adult(new Queen());
+    System.out.println(q.state.getRole().ifQueen(q).getPosition());
     Anthill myAnthill = new Anthill(q);
     myAnthill.listAnt.add(new Ant());
     myAnthill.listAnt.add(new Ant());
@@ -53,7 +60,7 @@ public class AnthillWorldView {
       a.notifyToObserverEvol(o, myAnthill);
       a.notifyToObserverEvol(o, myAnthill);
       Point antPos = a.getState().getRole().getPosition();
-      antsWorld.addAnthill(new AnthillView(new Point(205,205), new Dimension(30,30)));
+      antsWorld.addAnthill(new AnthillView(myAnthill.getPosition(), new Dimension(30,30)));
       antsWorld.addAnt(new AntView(antPos, new Dimension(10, 10)));
     }
 
@@ -73,16 +80,15 @@ public class AnthillWorldView {
        
     while (true) {
       List<MovableDrawable> drawables = antsWorld.contents();
-      
+      int i = 0;
       for (Ant a : myAnthill.listAnt) {
         Point antPos = a.getState().getRole().getPosition();
         a.getState().getRole().move();
+        v.visit(a);
         x = antPos.x;
-        y = antPos.y;        
-      }
-      
-      for (Iterator<MovableDrawable> iter = drawables.iterator(); iter.hasNext();) {
-        iter.next().setPosition(new Point(x,y));
+        y = antPos.y;
+        drawables.get(i).setPosition(new Point(x,y));
+        i++;
       }
       
       try {

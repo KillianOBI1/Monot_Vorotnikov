@@ -18,22 +18,28 @@ public class Worker extends Role {
     position = new Point(15,15);
   }
   
+  /**
+   * the worker feed herself.
+   * @param a the ant herself
+   */
   public void selfFeed(Ant a) {
-    a.setFoodQtty(this.carry.weight);
+    if (a.differenceBetweenTodayMeal() < 1 && carry != null) {
+      a.setFoodQtty(this.carry.weight);
+    }
   }
   /**
    * Feed other Ant by id.
    * @param la List of ants
    * @param id id of the ant
-   * @param weight food available for the ant
    */
   
   public void feedOther(List<Ant> la, int id) {
     Egg e = new Egg();
     Chrysalis c = new Chrysalis();
     if (!la.get(id).getState().equals(e) || !la.get(id).getState().equals(c)) {
-      if (la.get(id).differenceBetweenTodayMeal() < 1) {
+      if (la.get(id).differenceBetweenTodayMeal() < 1 && carry != null) {
         la.get(id).setFoodQtty(this.carry.weight);
+        carry = null;
       }
       
     }
