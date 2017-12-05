@@ -13,7 +13,7 @@ public class Worker extends Role {
   
   public Worker() {
     super();
-    position = new Point(0,0);
+    position = new Point(5,5);
   }
   
   public void selfFeed(Ant a, double weight) {
@@ -44,12 +44,11 @@ public class Worker extends Role {
 
   @Override
   public void move() {
-    int x = 115;
-    int y = 115;
-    while (true) {
-      x += 10;
-      this.position.setLocation(x, y);
-    }
+    int x = this.position.x;
+    int y = this.position.y;
+
+    this.position = new Point(x += 10, y);
+
   }
 
   @Override

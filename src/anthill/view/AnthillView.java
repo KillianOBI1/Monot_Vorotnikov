@@ -4,8 +4,12 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Calendar;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Random;
 
 import javax.swing.JFrame;
@@ -19,6 +23,7 @@ import javax.swing.border.EmptyBorder;
 
 import anthill.model.Ant;
 import anthill.model.Anthill;
+import anthill.observer.Observer;
 
 public class AnthillView {
 
@@ -32,15 +37,21 @@ public class AnthillView {
     AntsWorld antsWorld = new AntsWorld(10);
     JPanel actionField = antsWorld;
     actionField.setBackground(Color.WHITE);    
-    int x = 115;
-    int y = 115;
+    int x = 0;
+    int y = 0;
     Ant q = new Ant();
     Anthill myAnthill = new Anthill(q);
+    Observer o = new Observer();
     
     for (Ant a : myAnthill.listAnt) {
-      System.out.println(a.getState());
-      antsWorld.add(new AntView(a.getState().getRole().getPosition(), new Dimension(9, 9)));
-      a.getState().getRole().move();
+      Calendar cal = Calendar.getInstance();
+      cal.set(2017, 10, 05);
+      a.setDateStart(cal.getTime());
+      a.notifyToObserverEvol(o, myAnthill);
+      a.notifyToObserverEvol(o, myAnthill);
+      a.notifyToObserverEvol(o, myAnthill);
+      Point antPos = a.getState().getRole().getPosition();
+      antsWorld.add(new AntView(antPos, new Dimension(8, 8)));
     }
     
     AnthillView window = new AnthillView();
@@ -58,21 +69,24 @@ public class AnthillView {
     });
         
     while (true) {
-//      List<MovableDrawable> drawables = antsWorld.contents();
-//      for (Iterator<MovableDrawable> iter = drawables.iterator(); iter.hasNext();) {
-////        Boolean nextStep = r.nextBoolean();
-////        if (nextStep) {
-////          x += 10;
-////        } else {
-////          x -= 10;
-////        }
-//        iter.next().setPosition());
-//      }
-//      try {
-//        Thread.sleep(500);
-//      } catch (InterruptedException e) {
-//        e.printStackTrace();
-//      }
+      List<MovableDrawable> drawables = antsWorld.contents();
+      
+      for (Ant a : myAnthill.listAnt) {
+        Point antPos = a.getState().getRole().getPosition();
+        a.getState().getRole().move();
+        x = antPos.x;
+        y = antPos.y;        
+      }
+      
+      for (Iterator<MovableDrawable> iter = drawables.iterator(); iter.hasNext();) {
+        iter.next().setPosition(new Point(x,y));
+      }
+      try {
+        Thread.sleep(500);
+      } catch (InterruptedException e) {
+        e.printStackTrace();
+      }
+
       antsWorld.repaint();
     }
   }

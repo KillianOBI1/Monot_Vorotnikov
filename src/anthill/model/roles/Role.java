@@ -5,7 +5,7 @@ import java.awt.Point;
 
 public abstract class Role {
   
-  public Point position;
+  protected Point position;
   
   public abstract void move();
   

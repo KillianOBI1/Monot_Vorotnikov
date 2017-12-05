@@ -1,5 +1,7 @@
 package anthill.model.roles;
 
+import java.awt.Point;
+
 import anthill.model.Ant;
 
 public class Prince extends Role {
@@ -28,5 +30,11 @@ public class Prince extends Role {
   public void move() {
     // TODO Auto-generated method stub
     
+  }
+
+  @Override
+  public Point getPosition() {
+    // TODO Auto-generated method stub
+    return null;
   }
 }
