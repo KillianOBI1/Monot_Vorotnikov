@@ -62,7 +62,29 @@ public class Observer implements anthill.iface.Observer {
   @Override
   public void updateDeath(Ant dead, Anthill ah) {
     totalPop --;
-    
+    if (dead.getStateString().equals("Adult")) {
+      String role = dead.getState().getRole().getClass().getSimpleName();
+      switch (role) {
+        case "Queen":
+          break;
+        case "Worker":
+          //ah.nbWorker--;
+          break;
+        case "Soldier":
+          //ah.nbSoldier--;
+          break;
+        case "Prince":
+          //ah.nbPrince--;
+          break;
+        case "Princess":
+          //ah.nbPrincess--;
+          break;
+        default:
+          break;
+      }
+    } else {
+      //ah.nbMaggot--;
+    }
+    ah.listAnt.remove(dead.getAntId());
   }
-
 }

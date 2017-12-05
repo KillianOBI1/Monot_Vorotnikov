@@ -128,6 +128,11 @@ public class Ant implements anthill.iface.Observable {
     return ((this.dateEnd.getTime() - d1.getTime()) / (1000 * 60 * 60 * 24));
   }
   
+  public long differenceBetweenTodayMeal() {
+    Date d2 = new Date();
+    return ((d2.getTime() - this.dateMeal.getTime()) / (1000 * 60 * 60 * 24));
+  }
+  
   /**
    * Define when the ant die.
    * @return The Darkest day of his life
@@ -156,12 +161,8 @@ public class Ant implements anthill.iface.Observable {
   
   @Override
   public void notifyToObserverDeath(Observer o, Anthill ah) {
-    if (this.differenceBetweenTodayDeath() <= 0) {
+    if (this.differenceBetweenTodayDeath() <= 0 || this.differenceBetweenTodayMeal() >= 1) {
       o.updateDeath(this,ah);
-    } else if (this.differenceBetweenTodayDeath() >= 13) {
-      o.updateMaggotToChrysalis(this);
-    } else if (this.differenceBetweenTodayDeath() >= 30) {
-      o.updateChrysalisToAdult(this, ah);
     }
   }
   
