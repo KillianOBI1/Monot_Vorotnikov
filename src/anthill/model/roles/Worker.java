@@ -21,13 +21,12 @@ public class Worker extends Role {
   public void selfFeed(Ant a) {
     a.setFoodQtty(this.carry.weight);
   }
-  /**
-   * Feed other Ant by id.
-   * @param la List of ants
-   * @param id id of the ant
-   * @param weight food available for the ant
-   */
   
+  /**
+   * Feed other Ant by id
+   * @param la List of ants
+   * @param id id of the ant .
+   */  
   public void feedOther(List<Ant> la, int id) {
     Egg e = new Egg();
     Chrysalis c = new Chrysalis();

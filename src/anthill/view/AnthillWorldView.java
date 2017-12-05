@@ -8,9 +8,7 @@ import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Calendar;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Random;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -23,6 +21,8 @@ import javax.swing.border.EmptyBorder;
 
 import anthill.model.Ant;
 import anthill.model.Anthill;
+import anthill.model.roles.Queen;
+import anthill.model.states.Adult;
 import anthill.observer.Observer;
 
 public class AnthillWorldView {
@@ -33,13 +33,14 @@ public class AnthillWorldView {
    * Launch the application.
    */
   public static void main(String[] args) {
-    Random r = new Random();
+
     AntsWorld antsWorld = new AntsWorld(10);
     JPanel actionField = antsWorld;
     actionField.setBackground(Color.WHITE);    
     int x = 0;
     int y = 0;
     Ant q = new Ant();
+    q.state = new Adult(new Queen());
     Anthill myAnthill = new Anthill(q);
     myAnthill.listAnt.add(new Ant());
     myAnthill.listAnt.add(new Ant());
@@ -74,17 +75,13 @@ public class AnthillWorldView {
     while (true) {
       List<MovableDrawable> drawables = antsWorld.contents();
       
-      for (Ant a : myAnthill.listAnt) {
-        Point antPos = a.getState().getRole().getPosition();
-        a.getState().getRole().move();
-        x = antPos.x;
-        y = antPos.y;        
+      for (int i = 0;i < myAnthill.listAnt.size();i++) {
+        myAnthill.listAnt.get(i).getState().getRole().move();
+        x = myAnthill.listAnt.get(i).getState().getRole().getPosition().x;
+        y = myAnthill.listAnt.get(i).getState().getRole().getPosition().y;
+        drawables.get(i).setPosition(new Point(x, y));
       }
-      
-      for (Iterator<MovableDrawable> iter = drawables.iterator(); iter.hasNext();) {
-        iter.next().setPosition(new Point(x,y));
-      }
-      
+           
       try {
         Thread.sleep(50);
       } catch (InterruptedException e) {
