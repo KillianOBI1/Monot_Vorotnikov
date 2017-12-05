@@ -1,17 +1,18 @@
 package anthill.model;
 
-import java.awt.Point;
-import java.util.Calendar;
-import java.util.Date;
-
 import anthill.iface.Observer;
 import anthill.model.states.Egg;
 import anthill.model.states.State;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Random;
+
 
 
 public class Ant implements anthill.iface.Observable {
-  private int antId = 0;
+  private static int antCompt = 0;
+  private int antId;
   private Date dateStart;
   private Date dateEnd;
   private int weight;
@@ -24,15 +25,17 @@ public class Ant implements anthill.iface.Observable {
    * Ant constructor.
    */
   public Ant() {
-    this.antId++;
+    this.antCompt++;
+    this.antId = this.antCompt;
     this.dateStart = new Date();
-    this.dateEnd = new Date();
+    this.dateEnd = whenIDie(antId);
     this.weight = 0;
     this.foodQtty = 0.0;
     this.lastMeal = 0.0;
-    this.state = new Egg();
+    this.state = new Egg();     
   }
-  
+
+    
   public void setWeight(int weight) {
     this.weight = weight;
   }
@@ -60,7 +63,7 @@ public class Ant implements anthill.iface.Observable {
   public Date getDateStart() {
     return this.dateStart;
   }
-  
+
   public Date getDateEnd() {
     return this.dateEnd;
   }
@@ -88,11 +91,18 @@ public class Ant implements anthill.iface.Observable {
   public String getStateString() {
     return this.state.getState();
   }
-  
+
   @Override
-  public void notifyToObserver(Observer o) {
-    if (this.addDaysToBirthday(3).equals(new Date())) {
+  public void notifyToObserver(Observer o, Anthill ah) {
+    String stateF = "Egg";//First state
+    String stateS = "Maggot";//Second state 
+    String stateT = "Chrysalis";//Third state
+    if (this.differenceBetweenBirthToday() >= 3 && getStateString().equals(stateF)) {
       o.updateEggToMaggot(this);
+    } else if (this.differenceBetweenBirthToday() >= 13 && getStateString().equals(stateS)) {
+      o.updateMaggotToChrysalis(this);
+    } else if (this.differenceBetweenBirthToday() >= 30  && getStateString().equals(stateT)) {
+      o.updateChrysalisToAdult(this, ah);
     }
   }
   /**
@@ -105,8 +115,38 @@ public class Ant implements anthill.iface.Observable {
     Calendar c = Calendar.getInstance(); 
     c.setTime(this.dateStart);
     c.add(Calendar.DATE, nbDays);
-    Date newDate = c.getTime();
-    return newDate;
+    return c.getTime();
+  }
+  
+  public long differenceBetweenBirthToday() {
+    Date d1 = new Date();
+    return ((d1.getTime() - this.dateStart.getTime()) / (1000 * 60 * 60 * 24));
+  }
+  
+  /**
+   * Define when the ant die.
+   * @return The Darkest day of his life
+   */
+  public Date whenIDie(int id) {
+    if(id != 1) {
+      int min = 548;
+      int max = 912;
+      Random rand = new Random();
+      int nbDay = rand.nextInt((max + 1) - min) + min;
+      Calendar deathDate = Calendar.getInstance();
+      deathDate.setTime(this.dateStart);
+      deathDate.add(Calendar.DATE, nbDay);
+      return deathDate.getTime();
+    }
+    int min = 1460;
+    int max = 3650;
+    Random rand = new Random();
+    int nbDay = rand.nextInt((max + 1) - min) + min;
+    Calendar deathDate = Calendar.getInstance();
+    deathDate.setTime(this.dateStart);
+    deathDate.add(Calendar.DATE, nbDay);
+    return deathDate.getTime();
+    
   }
   
 }
