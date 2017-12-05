@@ -7,6 +7,7 @@ import anthill.iface.Visitor;
 
 public class Anthill implements anthill.iface.Visitable {
   public List<Ant> listAnt;
+  public List<Prey> meat;
   int nbMaggot;
   int nbChrysalis;
   int nbEgg;

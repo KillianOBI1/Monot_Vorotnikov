@@ -3,9 +3,9 @@ package anthill.model;
 import java.util.Date;
 
 public class Prey {
-  int weight;
-  Boolean isHunted;
-  Date dateDead;
+  public Double weight;
+  public Boolean isHunted;
+  public Date dateDead;
   //define position
   
   /**
