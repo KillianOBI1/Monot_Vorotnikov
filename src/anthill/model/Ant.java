@@ -89,9 +89,16 @@ public class Ant implements anthill.iface.Observable {
   }
 
   @Override
-  public void notifyToObserver(Observer o) {
-    if (this.addDaysToBirthday(3).equals(new Date())) {
+  public void notifyToObserver(Observer o, Anthill ah) {
+    String stateF = "Egg";//First state
+    String stateS = "Maggot";//Second state 
+    String stateT = "Chrysalis";//Third state
+    if (this.differenceBetweenBirthToday() >= 3 && getStateString().equals(stateF)) {
       o.updateEggToMaggot(this);
+    } else if (this.differenceBetweenBirthToday() >= 13 && getStateString().equals(stateS)) {
+      o.updateMaggotToChrysalis(this);
+    } else if (this.differenceBetweenBirthToday() >= 30  && getStateString().equals(stateT)) {
+      o.updateChrysalisToAdult(this, ah);
     }
   }
   /**
@@ -106,6 +113,11 @@ public class Ant implements anthill.iface.Observable {
     c.add(Calendar.DATE, nbDays);
     Date newDate = c.getTime();
     return newDate;
+  }
+  
+  public long differenceBetweenBirthToday() {
+    Date d1 = new Date();
+    return ((d1.getTime() - this.dateStart.getTime()) / (1000 * 60 * 60 * 24));
   }
   
 }
