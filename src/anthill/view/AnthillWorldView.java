@@ -80,15 +80,12 @@ public class AnthillWorldView {
        
     while (true) {
       List<MovableDrawable> drawables = antsWorld.contents();
-      int i = 0;           
-      for (Ant a : myAnthill.listAnt) {
-        Point antPos = a.getState().getRole().getPosition();
-        a.getState().getRole().move();
-        v.visit(a);
-        x = antPos.x;
-        y = antPos.y;
-        drawables.get(i).setPosition(new Point(x,y));
-        i++;
+      
+      for (int i = 0;i < myAnthill.listAnt.size();i++) {
+        myAnthill.listAnt.get(i).getState().getRole().move();
+        x = myAnthill.listAnt.get(i).getState().getRole().getPosition().x;
+        y = myAnthill.listAnt.get(i).getState().getRole().getPosition().y;
+        drawables.get(i).setPosition(new Point(x, y));
       }
            
       try {
