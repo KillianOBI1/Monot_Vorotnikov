@@ -14,7 +14,7 @@ public class Worker extends Role {
   
   public Worker() {
     super();
-    position = new Point(115,115);
+    position = new Point(15,15);
   }
   
   public void selfFeed(Ant a, double weight) {
@@ -51,13 +51,13 @@ public class Worker extends Role {
     Boolean nextStepX = r.nextBoolean();
     Boolean nextStepY = r.nextBoolean();
     
-    if (nextStepX == true && nextStepY == false) { //if x==true & y==false stepRight
+    if (nextStepX && !nextStepY && (x < 575)) { //if x==true & y==false stepRight
       this.position = new Point(x += 10, y);
-    } else if (!nextStepX && !nextStepY) { //if x==false & y==false stepLeft
+    } else if (!nextStepX && !nextStepY && (x > 5)) { //if x==false & y==false stepLeft
       this.position = new Point(x -= 10, y);
-    } else if (!nextStepX && nextStepY) { //if x==false & y==true stepDown
+    } else if (!nextStepX && nextStepY && (y < 520)) { //if x==false & y==true stepDown
       this.position = new Point(x, y += 10);
-    } else if (!nextStepX && !nextStepY) { //if x==false & y==false stepDown
+    } else if (!nextStepX && !nextStepY && (y > 5)) { //if x==false & y==false stepDown
       this.position = new Point(x, y -= 10);
     }
   }

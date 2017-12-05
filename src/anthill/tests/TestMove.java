@@ -1,15 +1,15 @@
 package anthill.tests;
 
-import java.util.Calendar;
-
-import org.junit.jupiter.api.Test;
-
 import anthill.model.Ant;
 import anthill.model.Anthill;
 import anthill.model.roles.Queen;
 import anthill.model.roles.Worker;
 import anthill.model.states.Adult;
 import anthill.observer.Observer;
+
+import java.util.Calendar;
+import org.junit.jupiter.api.Test;
+
 
 class TestMove {
 
@@ -39,7 +39,7 @@ class TestMove {
     
     Worker worker1 = (Worker) ah.listAnt.get(1).getState().getRole();
     System.out.println(worker1.getPosition());
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 100; i++) {
       worker1.move();
       System.out.println(worker1.getPosition());
     }

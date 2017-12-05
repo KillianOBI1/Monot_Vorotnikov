@@ -1,12 +1,9 @@
 package anthill.model.roles;
 
-import java.awt.Point;
-
 import anthill.model.Ant;
 import anthill.model.Anthill;
-import sun.util.calendar.LocalGregorianCalendar.Date;
+import java.awt.Point;
 
-@SuppressWarnings("unused")
 public class Queen extends Role {
   boolean isReign;
   boolean isPregnant;
