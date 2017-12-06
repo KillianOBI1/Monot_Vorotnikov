@@ -76,7 +76,7 @@ public class Worker extends Role implements ObservableWorld {
     Random r = new Random();
     Boolean nextStepX = r.nextBoolean();
     Boolean nextStepY = r.nextBoolean();
-    this.notifyToWorld(new Point(x,y));
+    this.notifyToWorld();
     if (nextStepX && !nextStepY && (x < 575)) { //if x==true & y==false stepRight
       this.position = new Point(x += 10, y);
     } else if (!nextStepX && !nextStepY && (x > 5)) { //if x==false & y==false stepLeft
@@ -111,7 +111,7 @@ public class Worker extends Role implements ObservableWorld {
   }
 
   @Override
-  public void notifyToWorld(Point p) {
-    wo.updatePosition(p);
+  public void notifyToWorld() {
+    wo.updatePosition(this.position);
   }
 }
