@@ -32,15 +32,14 @@ public class TestAnt {
     Observer o = new Observer();
     
     a.setDateStart(cal.getTime());
-    a.notifyToObserverEvol(o, ah);
-    a.notifyToObserverEvol(o, ah);
-    a.notifyToObserverEvol(o, ah);
+    a.notifyToObserverEvol(ah);
+    a.notifyToObserverEvol(ah);
+    a.notifyToObserverEvol(ah);
     System.out.println(a.getState().getRole());
     
     State neW = new Adult(new Queen());
     System.out.println(neW.getRole().getClass().getSimpleName());
     queen.getState().getRole().ifQueen(queen);
     System.out.println(a.getWeight());
-    
   }
 }
