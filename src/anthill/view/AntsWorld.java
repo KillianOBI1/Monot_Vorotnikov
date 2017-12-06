@@ -79,8 +79,13 @@ public class AntsWorld extends JPanel {
       iter.next().draw(g);
     }
     
-    for (Iterator<MovableDrawable> iter = square.iterator(); iter.hasNext();) { 
-      Color test = this.getComponentAt(iter.next().getPosition()).getForeground();
+    List<MovableDrawable> contents = new LinkedList<>();
+    for (int i = 0; i < square.size(); i++) {
+      contents.add(square.get(i));
+    }
+    
+    for (Iterator<MovableDrawable> iter = contents.iterator(); iter.hasNext();) { 
+//      Color test = this.getComponentAt(iter.next().getPosition()).getForeground();
       //if (!test.equals(Color.GREEN)) {
       iter.next().draw(g);
       
