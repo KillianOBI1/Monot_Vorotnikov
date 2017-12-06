@@ -1,27 +1,19 @@
 package anthill.model.roles;
 
-import anthill.iface.ObservableWorld;
-import anthill.model.Ant;
-import anthill.model.Anthill;
-import anthill.model.prey.Prey;
-import anthill.model.states.Chrysalis;
-import anthill.model.states.Egg;
-import anthill.view.World;
-
-
 import java.awt.Point;
 import java.util.List;
 import java.util.Random;
 
-
+import anthill.iface.ObservableWorld;
 import anthill.model.Ant;
 import anthill.model.Anthill;
-import anthill.model.prey.Prey;
+import anthill.model.prey.PreyA;
 import anthill.model.states.Chrysalis;
 import anthill.model.states.Egg;
+import anthill.view.World;
 
 public class Worker extends Role implements ObservableWorld {
-  Prey carry;
+  PreyA carry;
   World wo;
   
   /**
@@ -65,7 +57,7 @@ public class Worker extends Role implements ObservableWorld {
     //TODO
   }
   
-  public void fight(Prey p) {
+  public void fight(PreyA p) {
     //TODO
   }
 
