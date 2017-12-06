@@ -1,13 +1,14 @@
 package anthill.tests;
 
-import anthill.model.Ant;
+import java.util.Calendar;
+import java.util.Random;
 
+import anthill.model.Ant;
 import anthill.model.Anthill;
 import anthill.model.roles.Queen;
 import anthill.model.states.Adult;
 import anthill.model.states.State;
 import anthill.observer.Observer;
-import java.util.Calendar;
 
 public class TestAnt {
   
@@ -40,5 +41,6 @@ public class TestAnt {
     System.out.println(neW.getRole().getClass().getSimpleName());
     queen.getState().getRole().ifQueen(queen);
     System.out.println(a.getWeight());
+    
   }
 }

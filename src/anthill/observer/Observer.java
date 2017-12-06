@@ -1,8 +1,7 @@
 package anthill.observer;
 
-import java.util.Date;
-
 import anthill.model.Ant;
+
 import anthill.model.Anthill;
 import anthill.model.roles.Prince;
 import anthill.model.roles.Princess;
@@ -13,7 +12,8 @@ import anthill.model.states.Adult;
 import anthill.model.states.Chrysalis;
 import anthill.model.states.Maggot;
 
-
+import java.util.Date;
+import java.util.Random;
 
 public class Observer implements anthill.iface.Observer {
   final double quotaWorker = 0.7;
@@ -21,6 +21,7 @@ public class Observer implements anthill.iface.Observer {
   final double quotaPrince = 0.05;
   final double quotaPrincess = 0.05;
   int totalPop = 1;
+  protected Random random; 
   
   public Observer() {
     super();
@@ -30,6 +31,9 @@ public class Observer implements anthill.iface.Observer {
   public void updateEggToMaggot(Anthill ah, int id) {
     if (ah.listAnt.get(id).getStateString().equals("Egg")) {
       ah.listAnt.get(id).state = new Maggot();
+      this.random = new Random();
+      Double weight = 6 + random.nextDouble() * 1.7;
+      ah.listAnt.get(id).setWeight(weight);
       ah.setMaggot(1);
       ah.setEgg(-1);
     }
