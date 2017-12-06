@@ -1,6 +1,9 @@
 package anthill.view;
 
 
+import anthill.iface.ObserverWorld;
+import anthill.model.Anthill;
+
 import java.awt.Dimension;
 import java.awt.Point;
 import java.util.HashMap;
@@ -18,6 +21,8 @@ public class World implements ObserverWorld {
   HashMap<Point,Boolean> map;
   HashMap<Point,Boolean> praysMap;
   private Random rdm;
+  int height;
+  int width;
   
   /**
    * Constructeur du monde.
@@ -30,14 +35,16 @@ public class World implements ObserverWorld {
     this.map = new HashMap<Point,Boolean>(3016);
     this.praysMap = new HashMap<Point,Boolean>(3016);
     this.rdm = new Random();
+    this.height = 600;
+    this.width = 600;
   }
   
   /**
    * Initialisation du hashmap.
    */
   public void init() {
-    for (int i = 5 ; i < aw.getWidth() ; i += 10) {
-      for (int j = 5 ; i < aw.getHeight() ; i += 10) {
+    for (int i = 5 ; i < width ; i += 10) {
+      for (int j = 5 ; j < height ; j += 10) {
         this.map.put(new Point(i,j), false);
         this.praysMap.put(new Point(i,j), false);
       }
@@ -57,6 +64,29 @@ public class World implements ObserverWorld {
       int size = (p.getWeight()).intValue() / 10;
       aw.addPrey(new PreyView(p.getPosition(), new Dimension(size,size)));
     }
+  }
+  
+  /**
+   * Renvoie un boolean. Si la case a une pheromone elle renvoi true sinon false.
+   * @param p la case a verifé
+   * @return un boolean
+   */
+  public boolean getPheromonesWithPos(Point p) {
+    try {
+      return map.get(p);
+    } catch (NullPointerException e) {
+      e.printStackTrace();
+      return false;
+    }
+    
+  }
+  
+  public HashMap<Point,Boolean> getMap() {
+    return map;
+  }
+  
+  public void setMap(HashMap<Point,Boolean> m) {
+    map.putAll(m);
   }
   
   @Override

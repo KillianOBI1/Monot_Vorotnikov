@@ -1,5 +1,7 @@
 package anthill.tests;
 
+import java.util.Random;
+
 import org.junit.jupiter.api.Test;
 
 import anthill.model.Ant;
@@ -25,6 +27,11 @@ class TestDeath {
     for (Ant e :ah.listAnt) {
       System.out.println(e.getDateEnd() + " " + e.getAntId());
     }
+    Random r = new Random();
+    while (true) {
+      System.out.println(r.nextInt(100));
+    }
+    
   }
 
 }
