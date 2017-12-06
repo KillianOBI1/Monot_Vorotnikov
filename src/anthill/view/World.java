@@ -58,7 +58,8 @@ public class World implements ObserverWorld {
 
       Point p = new Point(x,y);
       praysMap.put(p, true);
-      aw.addPrey(new PreyView(p, new Dimension(12,12)));
+      int size = r.nextInt(14) + 2;
+      aw.addPrey(new PreyView(p, new Dimension(size,size)));
     }
   }
   
