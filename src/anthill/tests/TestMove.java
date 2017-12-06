@@ -30,9 +30,9 @@ class TestMove {
     System.out.println(cal.getTime());
     a.setDateStart(cal.getTime());
     Observer o = new Observer();
-    a.notifyToObserverEvol(o, ah);
-    a.notifyToObserverEvol(o, ah);
-    a.notifyToObserverEvol(o, ah);
+    a.notifyToObserverEvol(ah);
+    a.notifyToObserverEvol(ah);
+    a.notifyToObserverEvol(ah);
     for (Ant e :ah.listAnt) {
       System.out.println(e.getDateEnd() + " " + e.getAntId() + " " + e.getState().getRole());
     }

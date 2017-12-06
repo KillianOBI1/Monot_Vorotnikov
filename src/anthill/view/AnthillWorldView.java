@@ -51,17 +51,21 @@ public class AnthillWorldView {
     myAnthill.listAnt.add(new Ant());
     myAnthill.listAnt.add(new Ant());
     Observer o = new Observer();
-    
+    World w = new World(antsWorld,myAnthill);
+    w.init();
     for (Ant a : myAnthill.listAnt) {
       Calendar cal = Calendar.getInstance();
       cal.set(2017, 10, 05);
       a.setDateStart(cal.getTime());
-      a.notifyToObserverEvol(o, myAnthill);
-      a.notifyToObserverEvol(o, myAnthill);
-      a.notifyToObserverEvol(o, myAnthill);
+      a.notifyToObserverEvol(myAnthill);
+      a.notifyToObserverEvol(myAnthill);
+      a.notifyToObserverEvol(myAnthill);
       Point antPos = a.getState().getRole().getPosition();
       antsWorld.addAnthill(new AnthillView(myAnthill.getPosition(), new Dimension(30,30)));
       antsWorld.addAnt(new AntView(antPos, new Dimension(10, 10)));
+      if (a.state.getRole().toString(a).equals("Worker")) {
+        a.state.getRole().ifWorker(a).registerObserver(w);
+      }
     }
 
     AnthillWorldView window = new AnthillWorldView();

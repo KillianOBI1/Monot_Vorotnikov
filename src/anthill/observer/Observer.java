@@ -11,6 +11,7 @@ import anthill.model.states.Adult;
 import anthill.model.states.Chrysalis;
 import anthill.model.states.Maggot;
 
+import java.awt.Point;
 import java.util.Date;
 
 
@@ -21,6 +22,7 @@ public class Observer implements anthill.iface.Observer {
   final double quotaPrince = 0.05;
   final double quotaPrincess = 0.05;
   int totalPop = 1;
+  
   
   public Observer() {
     super();
@@ -100,5 +102,10 @@ public class Observer implements anthill.iface.Observer {
   @Override
   public void updateFood(Ant feeded) {
     feeded.setDateMeal(new Date());
+  }
+  
+  @Override
+  public void updatePosition(Anthill ah,Point p) {
+    
   }
 }

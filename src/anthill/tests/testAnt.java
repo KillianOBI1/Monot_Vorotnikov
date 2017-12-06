@@ -33,9 +33,9 @@ public class testAnt {
     cal.set(2017, 10, 05);
     System.out.println(cal.getTime());
     a.setDateStart(cal.getTime());
-    a.notifyToObserverEvol(o, ah);
-    a.notifyToObserverEvol(o, ah);
-    a.notifyToObserverEvol(o, ah);
+    a.notifyToObserverEvol(ah);
+    a.notifyToObserverEvol(ah);
+    a.notifyToObserverEvol(ah);
     System.out.println(a.getState().getRole());
     System.out.println(neW.getRole().getClass().getSimpleName());
     queen.getState().getRole().ifQueen(queen);
