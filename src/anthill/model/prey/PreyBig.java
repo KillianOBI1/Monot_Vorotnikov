@@ -13,7 +13,7 @@ public class PreyBig extends Prey {
    * Prey constructor.
    */
   public PreyBig(Point p) {
-    this.preyWeight = 60.0;
+    this.preyWeight = 180.0;
     this.isHunted = false;
     this.dateDead = null;
     this.preyPosition = p;

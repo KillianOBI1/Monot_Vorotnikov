@@ -23,8 +23,6 @@ import anthill.model.Ant;
 import anthill.model.Anthill;
 import anthill.model.roles.Queen;
 import anthill.model.states.Adult;
-import anthill.observer.Observer;
-
 
 public class AnthillWorldView {
 
@@ -42,7 +40,7 @@ public class AnthillWorldView {
     int y = 0;
     Ant q = new Ant();
     q.state = new Adult(new Queen());
-    System.out.println(q.state.getRole().ifQueen(q).getPosition());
+//    System.out.println(q.state.getRole().ifQueen(q).getPosition());
     Anthill myAnthill = new Anthill(q);
     myAnthill.listAnt.add(new Ant());
     myAnthill.listAnt.add(new Ant());
