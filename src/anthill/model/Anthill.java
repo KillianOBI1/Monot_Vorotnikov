@@ -20,7 +20,7 @@ public class Anthill implements anthill.iface.Visitable {
   int nbSoldier;
   Point position;
   public Observer ob;
-  anthill.visitor.Visitor vi;
+  public anthill.visitor.Visitor vi;
   
   /**
    * Anthill constructor.

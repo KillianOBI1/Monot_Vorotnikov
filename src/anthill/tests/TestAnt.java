@@ -31,9 +31,9 @@ public class TestAnt {
     Observer o = new Observer();
     
     a.setDateStart(cal.getTime());
-    a.notifyToObserverEvol(o, ah);
-    a.notifyToObserverEvol(o, ah);
-    a.notifyToObserverEvol(o, ah);
+    a.notifyToObserverEvol(ah);
+    a.notifyToObserverEvol(ah);
+    a.notifyToObserverEvol(ah);
     System.out.println(a.getState().getRole());
     
     State neW = new Adult(new Queen());

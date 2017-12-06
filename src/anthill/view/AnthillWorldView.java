@@ -47,7 +47,6 @@ public class AnthillWorldView {
     myAnthill.listAnt.add(new Ant());
     myAnthill.listAnt.add(new Ant());
 
-    Observer o = new Observer();
     World w = new World(antsWorld,myAnthill);
     w.init();
     for (Ant a : myAnthill.listAnt) {
@@ -83,6 +82,7 @@ public class AnthillWorldView {
       List<MovableDrawable> drawables = antsWorld.contents();
       
       for (int i = 0;i < myAnthill.listAnt.size();i++) {
+        myAnthill.vi.visit(myAnthill.listAnt.get(i));;
         myAnthill.listAnt.get(i).getState().getRole().move();
         x = myAnthill.listAnt.get(i).getState().getRole().getPosition().x;
         y = myAnthill.listAnt.get(i).getState().getRole().getPosition().y;
@@ -90,7 +90,7 @@ public class AnthillWorldView {
       }
            
       try {
-        Thread.sleep(50);
+        Thread.sleep(500);
       } catch (InterruptedException e) {
         e.printStackTrace();
       }
