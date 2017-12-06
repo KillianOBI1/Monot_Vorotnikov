@@ -24,6 +24,9 @@ public class AntsWorld extends JPanel {
   public AntsWorld(int gsize) {
     this.grilleSize = gsize;
   }
+  public AntsWorld getAw() {
+    return this;
+  }
   
   public List<MovableDrawable> contents() {
     return ants;
@@ -93,6 +96,8 @@ public class AntsWorld extends JPanel {
       // }
     }
   }
-  
-  
+
 }
+  
+  
+

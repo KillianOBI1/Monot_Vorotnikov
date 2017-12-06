@@ -14,6 +14,8 @@ public class World implements ObserverWorld {
   AntsWorld aw;
   Anthill ah;
   HashMap<Point,Boolean> map;
+  int height;
+  int width;
   
   /**
    * Constructeur du monde.
@@ -24,19 +26,44 @@ public class World implements ObserverWorld {
     this.aw = aw;
     this.ah = ah;
     this.map = new HashMap<Point,Boolean>(3016);
+    this.height = 600;
+    this.width = 600;
   }
   
   /**
    * Initialisation du hashmap.
    */
   public void init() {
-    for (int i = 5 ; i < aw.getWidth() ; i += 10) {
-      for (int j = 5 ; i < aw.getHeight() ; i += 10) {
+    for (int i = 5 ; i < width ; i += 10) {
+      for (int j = 5 ; j < height ; j += 10) {
         this.map.put(new Point(i,j), false);
         
       }
     }
     this.map.put(ah.getPosition(), true);
+  }
+  
+  /**
+   * Renvoie un boolean. Si la case a une pheromone elle renvoi true sinon false.
+   * @param p la case a verifé
+   * @return un boolean
+   */
+  public boolean getPheromonesWithPos(Point p) {
+    try {
+      return map.get(p);
+    } catch (NullPointerException e) {
+      e.printStackTrace();
+      return false;
+    }
+    
+  }
+  
+  public HashMap<Point,Boolean> getMap() {
+    return map;
+  }
+  
+  public void setMap(HashMap<Point,Boolean> m) {
+    map.putAll(m);
   }
   
   @Override

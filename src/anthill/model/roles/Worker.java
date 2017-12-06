@@ -73,6 +73,67 @@ public class Worker extends Role implements ObservableWorld {
   public void move() {
     int x = this.position.x;
     int y = this.position.y;
+    int northPc = 25;
+    int eastPc = 25;
+    int southPc = 25;
+    int westPc = 25;
+    boolean north = this.wo.getPheromonesWithPos(new Point(x,y - 10));
+    boolean east = this.wo.getPheromonesWithPos(new Point(x + 10,y));
+    boolean south = this.wo.getPheromonesWithPos(new Point(x,y + 10));
+    boolean west = this.wo.getPheromonesWithPos(new Point(x - 10,y));
+    if (north) {
+      northPc += 15;
+      eastPc -= 5;
+      southPc -= 5;
+      westPc -= 5;
+    }
+    if (east) {
+      northPc -= 5;
+      eastPc += 15;
+      southPc -= 5;
+      westPc -= 5;
+    }
+    if (south) {
+      northPc -= 5;
+      eastPc -= 5;
+      southPc += 15;
+      westPc -= 5;
+    }
+    if (west) {
+      northPc -= 5;
+      eastPc -= 5;
+      southPc -= 5;
+      westPc += 15;
+    }
+    System.out.println(northPc + " " + eastPc + " " + southPc + " " + westPc);
+    eastPc += northPc;
+    southPc += eastPc;
+    westPc += southPc;
+    Random r = new Random();
+    int chance = r.nextInt(100);
+    System.out.println(northPc + " " + eastPc + " " + southPc + " " + westPc + " " + chance);
+    if (chance < northPc) {
+      this.position = new Point(x, y - 10); 
+      System.out.println("NORTH");//move north
+    } else if (northPc < chance && chance < eastPc) {
+      this.position = new Point(x + 10, y); //move east
+      System.out.println("EAST");
+    } else if (eastPc < chance && chance < southPc) {
+      this.position = new Point(x, y + 10); //move south
+      System.out.println("SOUTH");
+    } else {
+      this.position = new Point(x - 10,y);  //move west
+      System.out.println("WEST");
+    }
+    this.notifyToWorld();
+  }
+
+  /**
+   * RandomizePosition.
+   */
+  public void randPosition() {
+    int x = this.position.x;
+    int y = this.position.y;
     Random r = new Random();
     Boolean nextStepX = r.nextBoolean();
     Boolean nextStepY = r.nextBoolean();
@@ -87,7 +148,7 @@ public class Worker extends Role implements ObservableWorld {
       this.position = new Point(x, y -= 10);
     }
   }
-
+  
   @Override
   public Point getPosition() {
     return this.position;
@@ -108,6 +169,7 @@ public class Worker extends Role implements ObservableWorld {
   @Override
   public void registerObserver(World w) {
     wo = w;
+    wo.setMap(w.getMap());
   }
 
   @Override
