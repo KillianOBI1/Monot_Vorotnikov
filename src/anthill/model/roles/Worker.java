@@ -1,31 +1,26 @@
 package anthill.model.roles;
 
-<<<<<<< HEAD
 import anthill.iface.ObservableWorld;
 import anthill.model.Ant;
 import anthill.model.Anthill;
-import anthill.model.Prey;
+import anthill.model.prey.Prey;
 import anthill.model.states.Chrysalis;
 import anthill.model.states.Egg;
 import anthill.view.World;
 
-=======
->>>>>>> refs/remotes/origin/master
+
 import java.awt.Point;
 import java.util.List;
 import java.util.Random;
 
-<<<<<<< HEAD
-public class Worker extends Role implements ObservableWorld{
-=======
+
 import anthill.model.Ant;
 import anthill.model.Anthill;
 import anthill.model.prey.Prey;
 import anthill.model.states.Chrysalis;
 import anthill.model.states.Egg;
 
-public class Worker extends Role {
->>>>>>> refs/remotes/origin/master
+public class Worker extends Role implements ObservableWorld {
   Prey carry;
   World wo;
   
