@@ -49,6 +49,7 @@ public class AnthillWorldView {
     Anthill myAnthill = new Anthill(q);
     myAnthill.listAnt.add(new Ant());
     myAnthill.listAnt.add(new Ant());
+
     Observer o = new Observer();
     
     for (Ant a : myAnthill.listAnt) {
