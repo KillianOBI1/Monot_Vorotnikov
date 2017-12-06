@@ -3,9 +3,9 @@ package anthill.iface;
 import anthill.model.Anthill;
 
 public interface Observable {
-  public void notifyToObserverEvol(Observer o, Anthill ah);
+  public void notifyToObserverEvol(Anthill ah);
   
-  public void notifyToObserverDeath(Observer o, Anthill ah);
+  public void notifyToObserverDeath(Anthill ah);
 
-  void notifyToObserverFood(Observer o);
+  void notifyToObserverFood(Anthill ah);
 }

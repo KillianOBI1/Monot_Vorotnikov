@@ -1,8 +1,18 @@
 package anthill.model.roles;
 
+import anthill.iface.ObservableWorld;
+import anthill.model.Ant;
+import anthill.model.Anthill;
+import anthill.model.prey.Prey;
+import anthill.model.states.Chrysalis;
+import anthill.model.states.Egg;
+import anthill.view.World;
+
+
 import java.awt.Point;
 import java.util.List;
 import java.util.Random;
+
 
 import anthill.model.Ant;
 import anthill.model.Anthill;
@@ -10,12 +20,18 @@ import anthill.model.prey.Prey;
 import anthill.model.states.Chrysalis;
 import anthill.model.states.Egg;
 
-public class Worker extends Role {
+public class Worker extends Role implements ObservableWorld {
   Prey carry;
+  World wo;
   
+  /**
+   * Worker constuctor.
+   * @param p the point of origin
+   */
   public Worker(Point p) {
     super();
     position = p;
+    wo = null;
   }
   
   /**
@@ -60,7 +76,7 @@ public class Worker extends Role {
     Random r = new Random();
     Boolean nextStepX = r.nextBoolean();
     Boolean nextStepY = r.nextBoolean();
-    
+    this.notifyToWorld(new Point(x,y));
     if (nextStepX && !nextStepY && (x < 575)) { //if x==true & y==false stepRight
       this.position = new Point(x += 10, y);
     } else if (!nextStepX && !nextStepY && (x > 5)) { //if x==false & y==false stepLeft
@@ -87,5 +103,15 @@ public class Worker extends Role {
   
   public void getFood(Anthill ah) {
     carry = ah.meat.get(ah.meat.size() - 1);
+  }
+  
+  @Override
+  public void registerObserver(World w) {
+    wo = w;
+  }
+
+  @Override
+  public void notifyToWorld(Point p) {
+    wo.updatePosition(p);
   }
 }

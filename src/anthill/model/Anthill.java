@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import anthill.iface.Visitor;
+import anthill.observer.Observer;
 import anthill.model.prey.Prey;
 
 public class Anthill implements anthill.iface.Visitable {
@@ -18,6 +19,8 @@ public class Anthill implements anthill.iface.Visitable {
   int nbPrincess;
   int nbSoldier;
   Point position;
+  public Observer ob;
+  anthill.visitor.Visitor vi;
   
   /**
    * Anthill constructor.
@@ -34,6 +37,20 @@ public class Anthill implements anthill.iface.Visitable {
     nbPrincess = 0;
     listAnt = new ArrayList<Ant>();
     listAnt.add(queen);
+    ob = new Observer();
+    vi = new anthill.visitor.Visitor();
+  }
+  
+  /**
+   * Initial ant way of life.
+   */
+  public void initEvol() {
+    
+    for (Ant e : listAnt) {
+      e.notifyToObserverEvol(this);
+      e.notifyToObserverDeath(this);
+      e.notifyToObserverFood(this);
+    }
   }
   
   public Point getPosition() {

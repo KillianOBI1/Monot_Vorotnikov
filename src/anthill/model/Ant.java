@@ -84,16 +84,18 @@ public class Ant implements anthill.iface.Observable, anthill.iface.Visitable {
   }
 
   @Override
-  public void notifyToObserverEvol(Observer o, Anthill ah) {
-    String stateF = "Egg";//First state
-    String stateS = "Maggot";//Second state 
-    String stateT = "Chrysalis";//Third state
-    if (this.differenceBetweenBirthToday() >= 3 && getStateString().equals(stateF)) {
-      o.updateEggToMaggot(ah,this.antId);
-    } else if (this.differenceBetweenBirthToday() >= 13 && getStateString().equals(stateS)) {
-      o.updateMaggotToChrysalis(ah,this.antId);
-    } else if (this.differenceBetweenBirthToday() >= 30  && getStateString().equals(stateT)) {
-      o.updateChrysalisToAdult(ah,this.antId);
+  public void notifyToObserverEvol(Anthill ah) {
+    while (true) {
+      String stateF = "Egg";//First state
+      String stateS = "Maggot";//Second state 
+      String stateT = "Chrysalis";//Third state
+      if (this.differenceBetweenBirthToday() >= 3 && getStateString().equals(stateF)) {
+        ah.ob.updateEggToMaggot(ah,this.antId);
+      } else if (this.differenceBetweenBirthToday() >= 13 && getStateString().equals(stateS)) {
+        ah.ob.updateMaggotToChrysalis(ah,this.antId);
+      } else if (this.differenceBetweenBirthToday() >= 30  && getStateString().equals(stateT)) {
+        ah.ob.updateChrysalisToAdult(ah,this.antId);
+      }
     }
   }
   /**
@@ -151,16 +153,20 @@ public class Ant implements anthill.iface.Observable, anthill.iface.Visitable {
   }
   
   @Override
-  public void notifyToObserverDeath(Observer o, Anthill ah) {
-    if (this.differenceBetweenTodayDeath() <= 0 || this.differenceBetweenTodayMeal() >= 1) {
-      o.updateDeath(this,ah);
+  public void notifyToObserverDeath(Anthill ah) {
+    while (true) {
+      if (this.differenceBetweenTodayDeath() <= 0 || this.differenceBetweenTodayMeal() >= 1) {
+        ah.ob.updateDeath(this,ah);
+      }
     }
   }
   
   @Override
-  public void notifyToObserverFood(Observer o) {
-    if (this.getFoodQtty() >= this.getWeight()) {
-      o.updateFood(this);
+  public void notifyToObserverFood(Anthill ah) {
+    while (true) {
+      if (this.getFoodQtty() >= this.getWeight()) {
+        ah.ob.updateFood(this);
+      }
     }
   }
 

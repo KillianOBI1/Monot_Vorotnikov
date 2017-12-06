@@ -1,5 +1,7 @@
 package anthill.iface;
 
+import java.awt.Point;
+
 import anthill.model.Ant;
 import anthill.model.Anthill;
 
@@ -14,4 +16,5 @@ public interface Observer {
   
   public void updateFood(Ant feeded);
   
+  public void updatePosition(Anthill ah,Point p);
 }
