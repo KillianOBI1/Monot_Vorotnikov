@@ -23,7 +23,6 @@ public class Observer implements anthill.iface.Observer {
   final double quotaPrincess = 0.05;
   int totalPop = 1;
   
-  
   public Observer() {
     super();
   }

@@ -1,5 +1,6 @@
 package anthill.model.roles;
 
+<<<<<<< HEAD
 import anthill.iface.ObservableWorld;
 import anthill.model.Ant;
 import anthill.model.Anthill;
@@ -8,11 +9,23 @@ import anthill.model.states.Chrysalis;
 import anthill.model.states.Egg;
 import anthill.view.World;
 
+=======
+>>>>>>> refs/remotes/origin/master
 import java.awt.Point;
 import java.util.List;
 import java.util.Random;
 
+<<<<<<< HEAD
 public class Worker extends Role implements ObservableWorld{
+=======
+import anthill.model.Ant;
+import anthill.model.Anthill;
+import anthill.model.prey.Prey;
+import anthill.model.states.Chrysalis;
+import anthill.model.states.Egg;
+
+public class Worker extends Role {
+>>>>>>> refs/remotes/origin/master
   Prey carry;
   World wo;
   
@@ -32,21 +45,21 @@ public class Worker extends Role implements ObservableWorld{
    */
   public void selfFeed(Ant a) {
     if (a.differenceBetweenTodayMeal() < 1 && carry != null) {
-      a.setFoodQtty(this.carry.weight);
+      a.setFoodQtty(this.carry.getWeight());
     }
   }
-  /**
-   * Feed other Ant by id.
-   * @param la List of ants
-   * @param id id of the ant
-   */
   
+  /**
+   * Feed other Ant by id
+   * @param la List of ants
+   * @param id id of the ant .
+   */  
   public void feedOther(List<Ant> la, int id) {
     Egg e = new Egg();
     Chrysalis c = new Chrysalis();
     if (!la.get(id).getState().equals(e) || !la.get(id).getState().equals(c)) {
       if (la.get(id).differenceBetweenTodayMeal() < 1 && carry != null) {
-        la.get(id).setFoodQtty(this.carry.weight);
+        la.get(id).setFoodQtty(this.carry.getWeight());
         carry = null;
       }
       

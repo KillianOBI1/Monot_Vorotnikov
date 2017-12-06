@@ -8,9 +8,7 @@ import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Calendar;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Random;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -23,10 +21,9 @@ import javax.swing.border.EmptyBorder;
 
 import anthill.model.Ant;
 import anthill.model.Anthill;
-import anthill.observer.Observer;
-import anthill.visitor.Visitor;
 import anthill.model.roles.Queen;
 import anthill.model.states.Adult;
+import anthill.observer.Observer;
 
 
 public class AnthillWorldView {
@@ -37,11 +34,10 @@ public class AnthillWorldView {
    * Launch the application.
    */
   public static void main(String[] args) {
-    Random r = new Random();
-    Visitor v = new Visitor();
+
     AntsWorld antsWorld = new AntsWorld(10);
     JPanel actionField = antsWorld;
-    actionField.setBackground(Color.WHITE);    
+    actionField.setBackground(Color.WHITE);
     int x = 0;
     int y = 0;
     Ant q = new Ant();
@@ -50,6 +46,7 @@ public class AnthillWorldView {
     Anthill myAnthill = new Anthill(q);
     myAnthill.listAnt.add(new Ant());
     myAnthill.listAnt.add(new Ant());
+
     Observer o = new Observer();
     World w = new World(antsWorld,myAnthill);
     w.init();
@@ -84,17 +81,14 @@ public class AnthillWorldView {
        
     while (true) {
       List<MovableDrawable> drawables = antsWorld.contents();
-      int i = 0;
-      for (Ant a : myAnthill.listAnt) {
-        Point antPos = a.getState().getRole().getPosition();
-        a.getState().getRole().move();
-        v.visit(a);
-        x = antPos.x;
-        y = antPos.y;
-        drawables.get(i).setPosition(new Point(x,y));
-        i++;
-      }
       
+      for (int i = 0;i < myAnthill.listAnt.size();i++) {
+        myAnthill.listAnt.get(i).getState().getRole().move();
+        x = myAnthill.listAnt.get(i).getState().getRole().getPosition().x;
+        y = myAnthill.listAnt.get(i).getState().getRole().getPosition().y;
+        drawables.get(i).setPosition(new Point(x, y));
+      }
+           
       try {
         Thread.sleep(50);
       } catch (InterruptedException e) {

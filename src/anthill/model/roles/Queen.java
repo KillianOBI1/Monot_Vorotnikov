@@ -1,9 +1,10 @@
 package anthill.model.roles;
 
-import anthill.model.Ant;
-import anthill.model.Anthill;
 import java.awt.Point;
 import java.util.Random;
+
+import anthill.model.Ant;
+import anthill.model.Anthill;
 
 public class Queen extends Role {
   boolean isReign;

@@ -1,9 +1,14 @@
 package anthill.model.roles;
 
+<<<<<<< HEAD
 import anthill.model.Ant;
 import anthill.model.Anthill;
 
+=======
+>>>>>>> refs/remotes/origin/master
 import java.awt.Point;
+
+import anthill.model.Ant;
 
 public abstract class Role {
   
