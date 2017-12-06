@@ -75,7 +75,6 @@ public class AnthillWorldView {
         }
       }
     });
-       
     while (true) {
       List<MovableDrawable> drawables = antsWorld.contents();
       for (int i = 0;i < myAnthill.listAnt.size();i++) {
