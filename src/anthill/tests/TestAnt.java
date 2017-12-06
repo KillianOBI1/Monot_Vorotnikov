@@ -39,5 +39,6 @@ public class TestAnt {
     State neW = new Adult(new Queen());
     System.out.println(neW.getRole().getClass().getSimpleName());
     queen.getState().getRole().ifQueen(queen);
+    System.out.println(a.getWeight());
   }
 }

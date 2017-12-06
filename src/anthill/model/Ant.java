@@ -16,7 +16,7 @@ public class Ant implements anthill.iface.Observable, anthill.iface.Visitable {
   private int antId;
   private Date dateStart;
   private Date dateEnd;
-  private int weight;
+  private Double weight;
   private Double foodQtty;
   private Date dateMeal;
   public State state;
@@ -29,13 +29,13 @@ public class Ant implements anthill.iface.Observable, anthill.iface.Visitable {
     this.antCompt++;
     this.dateStart = new Date();
     this.dateEnd = whenIDie(antId);
-    this.weight = 0;
+    this.weight = 1.0;
     this.foodQtty = 0.0;
     this.state = new Egg();     
   }
 
     
-  public void setWeight(int weight) {
+  public void setWeight(Double weight) {
     this.weight = weight;
   }
   
@@ -63,7 +63,7 @@ public class Ant implements anthill.iface.Observable, anthill.iface.Visitable {
     return this.dateEnd;
   }
   
-  public int getWeight() {
+  public Double getWeight() {
     return this.weight;
   }
   
