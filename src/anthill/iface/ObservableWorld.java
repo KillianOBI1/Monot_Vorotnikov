@@ -1,7 +1,5 @@
 package anthill.iface;
 
-import java.awt.Point;
-
 import anthill.view.World;
 
 public interface ObservableWorld {

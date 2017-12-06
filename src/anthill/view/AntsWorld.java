@@ -14,6 +14,7 @@ public class AntsWorld extends JPanel {
   private List<MovableDrawable> ants = new LinkedList<>();
   private List<MovableDrawable> antHills = new LinkedList<>();
   private List<MovableDrawable> square = new LinkedList<>();
+  private List<MovableDrawable> preys = new LinkedList<>();
   
   private int grilleSize;
   
@@ -39,6 +40,10 @@ public class AntsWorld extends JPanel {
   public void addAnthill(MovableDrawable d) {
     antHills.add(d);
   }
+  
+  public void addPrey(MovableDrawable d) {
+    preys.add(d);
+  }
 
   public void removeAnt(MovableDrawable d) {
     ants.remove(d);
@@ -46,6 +51,10 @@ public class AntsWorld extends JPanel {
   
   public void removeAnthill(MovableDrawable d) {
     antHills.remove(d);
+  }
+  
+  public void removePrey(MovableDrawable d) {
+    preys.remove(d);
   }
   
   public void addSquare(MovableDrawable d) {
@@ -81,19 +90,22 @@ public class AntsWorld extends JPanel {
     for (Iterator<MovableDrawable> iter = ants.iterator(); iter.hasNext();) {
       iter.next().draw(g);
     }
+    
     List<MovableDrawable> contens = new LinkedList<>();
     for (int i = 0; i < square.size(); i++) {
       contens.add(square.get(i));
     }
+    
     for (Iterator<MovableDrawable> iter = contens.iterator(); iter.hasNext();) { 
-      //Color test = this.getComponentAt(iter.next().getPosition()).getForeground();
-      //if (!test.equals(Color.GREEN)) {
       try {
         iter.next().draw(g);
       } catch (Exception e) {
         e.printStackTrace();
       }
-      // }
+    }
+    
+    for (Iterator<MovableDrawable> iter = preys.iterator(); iter.hasNext();) { 
+      iter.next().draw(g);
     }
   }
 

@@ -6,11 +6,11 @@ import java.util.List;
 
 import anthill.iface.Visitor;
 import anthill.observer.Observer;
-import anthill.model.prey.Prey;
+import anthill.model.prey.PreyA;
 
 public class Anthill implements anthill.iface.Visitable {
   public List<Ant> listAnt;
-  public List<Prey> meat;
+  public List<PreyA> meat;
   int nbMaggot;
   int nbChrysalis;
   int nbEgg;

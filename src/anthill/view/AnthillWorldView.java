@@ -48,6 +48,8 @@ public class AnthillWorldView {
     myAnthill.listAnt.add(new Ant());
     World w = new World(antsWorld,myAnthill);
     w.init();
+    w.setPreys();
+    
     for (Ant a : myAnthill.listAnt) {
       Calendar cal = Calendar.getInstance();
       cal.set(2017, 10, 05);
@@ -62,6 +64,7 @@ public class AnthillWorldView {
         a.state.getRole().ifWorker(a).registerObserver(w);
       }
     }
+
     AnthillWorldView window = new AnthillWorldView();
     
     window.frame.getContentPane().add(actionField, BorderLayout.CENTER);
@@ -77,10 +80,8 @@ public class AnthillWorldView {
     });
     while (true) {
       List<MovableDrawable> drawables = antsWorld.contents();
+      
       for (int i = 0;i < myAnthill.listAnt.size();i++) {
-        if (myAnthill.listAnt.get(i).state.getRole().toString(myAnthill.listAnt.get(i)).equals("Worker")) {
-          myAnthill.listAnt.get(i).state.getRole().ifWorker(myAnthill.listAnt.get(i)).registerObserver(w);
-        }
         myAnthill.vi.visit(myAnthill.listAnt.get(i));;
         myAnthill.listAnt.get(i).getState().getRole().move();
         x = myAnthill.listAnt.get(i).getState().getRole().getPosition().x;
