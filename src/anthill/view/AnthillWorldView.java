@@ -37,8 +37,7 @@ public class AnthillWorldView {
    * Launch the application.
    */
   public static void main(String[] args) {
-    Random r = new Random();
-    Visitor v = new Visitor();
+
     AntsWorld antsWorld = new AntsWorld(10);
     JPanel actionField = antsWorld;
     actionField.setBackground(Color.WHITE);    
@@ -50,6 +49,7 @@ public class AnthillWorldView {
     Anthill myAnthill = new Anthill(q);
     myAnthill.listAnt.add(new Ant());
     myAnthill.listAnt.add(new Ant());
+
     Observer o = new Observer();
     
     for (Ant a : myAnthill.listAnt) {
