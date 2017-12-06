@@ -40,13 +40,15 @@ public class AnthillWorldView {
     int y = 0;
     Ant q = new Ant();
     q.state = new Adult(new Queen());
-//    System.out.println(q.state.getRole().ifQueen(q).getPosition());
+
     Anthill myAnthill = new Anthill(q);
     myAnthill.listAnt.add(new Ant());
     myAnthill.listAnt.add(new Ant());
 
     World w = new World(antsWorld,myAnthill);
     w.init();
+    w.setPreys();
+    
     for (Ant a : myAnthill.listAnt) {
       Calendar cal = Calendar.getInstance();
       cal.set(2017, 10, 05);
@@ -80,7 +82,7 @@ public class AnthillWorldView {
       List<MovableDrawable> drawables = antsWorld.contents();
       
       for (int i = 0;i < myAnthill.listAnt.size();i++) {
-        myAnthill.vi.visit(myAnthill.listAnt.get(i));;
+//        myAnthill.vi.visit(myAnthill.listAnt.get(i));
         myAnthill.listAnt.get(i).getState().getRole().move();
         x = myAnthill.listAnt.get(i).getState().getRole().getPosition().x;
         y = myAnthill.listAnt.get(i).getState().getRole().getPosition().y;

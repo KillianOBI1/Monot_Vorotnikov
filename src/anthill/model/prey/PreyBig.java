@@ -3,13 +3,15 @@ package anthill.model.prey;
 import java.awt.Point;
 import java.util.Date;
 
-import anthill.iface.ObserverWorld;
+import anthill.iface.ObservableWorld;
+import anthill.view.World;
 
-public class PreyBig extends Prey implements ObserverWorld {
+public class PreyBig extends Prey implements ObservableWorld {
   public Double preyWeight;
   public Boolean isHunted;
   public Date dateDead;
   public Point preyPosition;
+  private World wo;
   
   /**
    * Prey constructor.
@@ -19,6 +21,7 @@ public class PreyBig extends Prey implements ObserverWorld {
     this.isHunted = false;
     this.dateDead = null;
     this.preyPosition = new Point();
+    this.wo = null;
   }
 
   @Override
@@ -37,9 +40,13 @@ public class PreyBig extends Prey implements ObserverWorld {
   }
 
   @Override
-  public void updatePosition(Point p) {
-    this.preyPosition = p;    
+  public void registerObserver(World w) {
+    wo = w;
   }
 
+  @Override
+  public void notifyToWorld() {
+    wo.updatePrey(this.preyPosition);
+  }
   
 }

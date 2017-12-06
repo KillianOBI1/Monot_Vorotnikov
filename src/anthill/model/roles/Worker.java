@@ -112,6 +112,6 @@ public class Worker extends Role implements ObservableWorld {
 
   @Override
   public void notifyToWorld() {
-    wo.updatePosition(this.position);
+    wo.update(this.position);
   }
 }
