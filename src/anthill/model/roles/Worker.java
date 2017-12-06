@@ -6,7 +6,7 @@ import java.util.Random;
 
 import anthill.model.Ant;
 import anthill.model.Anthill;
-import anthill.model.Prey;
+import anthill.model.prey.Prey;
 import anthill.model.states.Chrysalis;
 import anthill.model.states.Egg;
 
@@ -24,7 +24,7 @@ public class Worker extends Role {
    */
   public void selfFeed(Ant a) {
     if (a.differenceBetweenTodayMeal() < 1 && carry != null) {
-      a.setFoodQtty(this.carry.weight);
+      a.setFoodQtty(this.carry.getWeight());
     }
   }
   
@@ -38,7 +38,7 @@ public class Worker extends Role {
     Chrysalis c = new Chrysalis();
     if (!la.get(id).getState().equals(e) || !la.get(id).getState().equals(c)) {
       if (la.get(id).differenceBetweenTodayMeal() < 1 && carry != null) {
-        la.get(id).setFoodQtty(this.carry.weight);
+        la.get(id).setFoodQtty(this.carry.getWeight());
         carry = null;
       }
       
