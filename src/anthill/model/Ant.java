@@ -86,15 +86,15 @@ public class Ant implements anthill.iface.Observable, anthill.iface.Visitable {
   @Override
   public void notifyToObserverEvol(Anthill ah) {
     String stateF = "Egg";//First state
-    String stateS = "Maggot";//Second state 
-    String stateT = "Chrysalis";//Third state
-    if (this.differenceBetweenBirthToday() >= 3 && getStateString().equals(stateF)) {
-      ah.ob.updateEggToMaggot(ah,this.antId);
-    } else if (this.differenceBetweenBirthToday() >= 13 && getStateString().equals(stateS)) {
-      ah.ob.updateMaggotToChrysalis(ah,this.antId);
-    } else if (this.differenceBetweenBirthToday() >= 30  && getStateString().equals(stateT)) {
-      ah.ob.updateChrysalisToAdult(ah,this.antId);
-    }
+     String stateS = "Maggot";//Second state 
+     String stateT = "Chrysalis";//Third state
+     if (this.differenceBetweenBirthToday() >= 3 && getStateString().equals(stateF)) {
+       ah.ob.updateEggToMaggot(ah,this.antId);
+     } else if (this.differenceBetweenBirthToday() >= 13 && getStateString().equals(stateS)) {
+       ah.ob.updateMaggotToChrysalis(ah,this.antId);
+     } else if (this.differenceBetweenBirthToday() >= 30  && getStateString().equals(stateT)) {
+       ah.ob.updateChrysalisToAdult(ah,this.antId);
+     }
   }
   /**
    * Add nbDays to the birth https://openclassrooms.com/forum/sujet/compteur-d-instancesdate.

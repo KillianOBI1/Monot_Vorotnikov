@@ -13,6 +13,7 @@ public class AntsWorld extends JPanel {
   private static final long serialVersionUID = 1L;
   private List<MovableDrawable> ants = new LinkedList<>();
   private List<MovableDrawable> antHills = new LinkedList<>();
+  private List<MovableDrawable> square = new LinkedList<>();
   
   private int grilleSize;
   
@@ -44,6 +45,14 @@ public class AntsWorld extends JPanel {
     antHills.remove(d);
   }
   
+  public void addSquare(MovableDrawable d) {
+    square.add(d);
+  }
+  
+  public void removeSquare(MovableDrawable d) {
+    square.remove(d);
+  }
+  
   /**
    * @see javax.swing.JComponent#paint(java.awt.Graphics)
    */
@@ -68,6 +77,14 @@ public class AntsWorld extends JPanel {
     
     for (Iterator<MovableDrawable> iter = ants.iterator(); iter.hasNext();) {
       iter.next().draw(g);
+    }
+    
+    for (Iterator<MovableDrawable> iter = square.iterator(); iter.hasNext();) { 
+      Color test = this.getComponentAt(iter.next().getPosition()).getForeground();
+      //if (!test.equals(Color.GREEN)) {
+      iter.next().draw(g);
+      
+      // }
     }
   }
 }
