@@ -1,15 +1,14 @@
 package anthill.tests;
 
+import static org.junit.Assert.assertTrue;
+
+import org.junit.jupiter.api.Test;
+
 import anthill.model.Ant;
 import anthill.model.Anthill;
 import anthill.model.roles.Queen;
 import anthill.model.states.Adult;
 import anthill.observer.Observer;
-
-import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.*;
-
-import org.junit.jupiter.api.Test;
 
 
 

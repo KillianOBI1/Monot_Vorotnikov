@@ -1,14 +1,14 @@
 package anthill.model.roles;
 
+import java.awt.Point;
+import java.util.List;
+import java.util.Random;
+
 import anthill.model.Ant;
 import anthill.model.Anthill;
 import anthill.model.Prey;
 import anthill.model.states.Chrysalis;
 import anthill.model.states.Egg;
-
-import java.awt.Point;
-import java.util.List;
-import java.util.Random;
 
 public class Worker extends Role {
   Prey carry;

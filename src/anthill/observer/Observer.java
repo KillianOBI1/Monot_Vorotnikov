@@ -1,5 +1,7 @@
 package anthill.observer;
 
+import java.util.Date;
+
 import anthill.model.Ant;
 import anthill.model.Anthill;
 import anthill.model.roles.Prince;
@@ -10,8 +12,6 @@ import anthill.model.roles.Worker;
 import anthill.model.states.Adult;
 import anthill.model.states.Chrysalis;
 import anthill.model.states.Maggot;
-
-import java.util.Date;
 
 
 

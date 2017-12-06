@@ -1,7 +1,8 @@
 package anthill.model.roles;
 
-import anthill.model.Ant;
 import java.awt.Point;
+
+import anthill.model.Ant;
 
 public abstract class Role {
   
