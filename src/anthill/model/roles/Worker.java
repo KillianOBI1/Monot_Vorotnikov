@@ -69,6 +69,13 @@ public class Worker extends Role implements ObservableWorld {
     int eastPc = 25;
     int southPc = 25;
     int westPc = 25;
+    if (x <= 5) {
+      this.position = new Point(x + 10, y);
+      return;
+    } else if (y <= 5) {
+      this.position = new Point(x, y + 10);
+      return;
+    }
     boolean north = this.wo.getPheromonesWithPos(new Point(x,y - 10));
     boolean east = this.wo.getPheromonesWithPos(new Point(x + 10,y));
     boolean south = this.wo.getPheromonesWithPos(new Point(x,y + 10));
@@ -97,13 +104,11 @@ public class Worker extends Role implements ObservableWorld {
       southPc -= 5;
       westPc += 15;
     }
-    System.out.println(northPc + " " + eastPc + " " + southPc + " " + westPc);
     eastPc += northPc;
     southPc += eastPc;
     westPc += southPc;
     Random r = new Random();
     int chance = r.nextInt(100);
-    System.out.println(northPc + " " + eastPc + " " + southPc + " " + westPc + " " + chance);
     if (chance < northPc) {
       this.position = new Point(x, y - 10); 
       System.out.println("NORTH");//move north
