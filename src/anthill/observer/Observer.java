@@ -9,6 +9,7 @@ import anthill.model.roles.Soldier;
 import anthill.model.roles.Worker;
 import anthill.model.states.Adult;
 import anthill.model.states.Chrysalis;
+import anthill.model.states.Egg;
 import anthill.model.states.Maggot;
 
 import java.util.Random;
@@ -37,20 +38,24 @@ public class Observer implements anthill.iface.Observer {
   @Override
   public void updateEggToMaggot(Anthill ah, int id) {
     /*L'oeuf devient une larve*/
-    ah.listAnt.get(id).state = new Maggot();
-    this.random = new Random();
-    Double weight = 6 + random.nextDouble() * 1.7;//poids determiné aléatoirement
-    ah.listAnt.get(id).setWeight(weight);
-    ah.setMaggot(1);// ajout d'une larve au compteur de larve
-    ah.setEgg(-1); // on enleve l'oeuf du compteur
+    if (ah.listAnt.get(id).getState() instanceof Egg) {
+      ah.listAnt.get(id).state = new Maggot();
+      this.random = new Random();
+      Double weight = 6 + random.nextDouble() * 1.7;//poids determiné aléatoirement
+      ah.listAnt.get(id).setWeight(weight);
+      ah.setMaggot(1);// ajout d'une larve au compteur de larve
+      ah.setEgg(-1); // on enleve l'oeuf du compteur
+    }
   }
 
   @Override
   public void updateMaggotToChrysalis(Anthill ah, int id) {
     /*La larve devient une Nymphe*/
-    ah.listAnt.get(id).state = new Chrysalis();
-    ah.setMaggot(-1);
-    ah.setChrysalis(1);
+    if (ah.listAnt.get(id).getState() instanceof Maggot) {
+      ah.listAnt.get(id).state = new Chrysalis();
+      ah.setMaggot(-1);
+      ah.setChrysalis(1);
+    }
   }
 
   @Override
