@@ -1,24 +1,32 @@
 package anthill.tests;
 
-import java.util.Calendar;
-import java.util.Random;
+import static org.junit.Assert.assertTrue;
 
 import anthill.model.Ant;
 import anthill.model.Anthill;
 import anthill.model.roles.Queen;
 import anthill.model.states.Adult;
+import anthill.model.states.Egg;
 import anthill.model.states.State;
-import anthill.observer.Observer;
+
+import java.util.Calendar;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class TestAnt {
   
-  /**
-   * Test the queen.
-   * @param args arg
-   */
-  public static void main(String... args) {
-    Ant queen = new Ant();
-    System.out.println(queen.getState());
+  Ant queen;
+  
+  @BeforeEach
+  void setUp() throws Exception {
+    queen = new Ant();
+  }
+  
+  @Test
+  void test() {
+//    assertTrue(queen.getState().equals(new Egg()));
+    System.out.println(queen.getState().equals(new Egg()));
     System.out.println(queen.getStateString());
     queen.state = new Adult(new Queen());
 
@@ -28,9 +36,7 @@ public class TestAnt {
     Calendar cal = Calendar.getInstance();
     cal.set(2017, 10, 05);
     System.out.println(cal.getTime());
-    
-    Observer o = new Observer();
-    
+        
     a.setDateStart(cal.getTime());
     a.notifyToObserverEvol(ah);
     a.notifyToObserverEvol(ah);
