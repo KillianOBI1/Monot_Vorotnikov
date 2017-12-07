@@ -110,17 +110,13 @@ public class Worker extends Role implements ObservableWorld {
     Random r = new Random();
     int chance = r.nextInt(100);
     if (chance < northPc) {
-      this.position = new Point(x, y - 10); 
-      System.out.println("NORTH");//move north
+      this.position = new Point(x, y - 10); //move north
     } else if (northPc < chance && chance < eastPc) {
       this.position = new Point(x + 10, y); //move east
-      System.out.println("EAST");
     } else if (eastPc < chance && chance < southPc) {
       this.position = new Point(x, y + 10); //move south
-      System.out.println("SOUTH");
     } else {
       this.position = new Point(x - 10,y);  //move west
-      System.out.println("WEST");
     }
     this.notifyToWorld();
   }
