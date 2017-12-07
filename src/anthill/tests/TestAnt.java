@@ -32,24 +32,8 @@ public class TestAnt {
     
     ant.state = new Adult(new Queen());
     assertTrue(ant.getState() instanceof Adult);
-    
-//    Anthill ah = queen.getState().getRole().ifQueen(queen).createAnthill(queen);
-//    Ant a = queen.getState().getRole().ifQueen(queen).createEgg(ah);
-//    ah.listAnt.add(a);
-//    Calendar cal = Calendar.getInstance();
-//    cal.set(2017, 10, 05);
-//    System.out.println(cal.getTime());
-//        
-//    a.setDateStart(cal.getTime());
-//    a.notifyToObserverEvol(ah);
-//    a.notifyToObserverEvol(ah);
-//    a.notifyToObserverEvol(ah);
-//    System.out.println(a.getState().getRole());
-//    
-//    State neW = new Adult(new Queen());
-//    System.out.println(neW.getRole().getClass().getSimpleName());
-//    queen.getState().getRole().ifQueen(queen);
-//    System.out.println(a.getWeight());
+    assertTrue(ant.getStateString().equals("Adult"));
+    assertFalse(ant.getStateString().equals("Egg"));
   }
   
   @Test

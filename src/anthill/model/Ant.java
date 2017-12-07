@@ -8,14 +8,10 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
 
-
 /**
-  * 
-  * @author Monot_Vorotnikov
-  * Classe Ant(Fourmi).
-  */
-
-
+ * @author Monot_Vorotnikov
+ *     Classe Ant(Fourmi) .
+ */
 public class Ant implements anthill.iface.Observable, anthill.iface.Visitable {
   private static int antCompt = 0; /* compteur de fourmi*/
   private int antId; /* Son Id */
@@ -47,6 +43,7 @@ public class Ant implements anthill.iface.Observable, anthill.iface.Visitable {
   public void setDateStart(Date d) {
     this.dateStart = d;
   }
+  
   /**
    * Cette fonction permet de nourrir la fourmi.
    * @param amountOfFood la quantité de nourriture
