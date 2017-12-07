@@ -75,7 +75,6 @@ public class World implements ObserverWorld {
     try {
       return map.get(p);
     } catch (NullPointerException e) {
-      e.printStackTrace();
       return false;
     }
     
