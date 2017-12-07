@@ -1,10 +1,15 @@
 package anthill.tests;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import anthill.model.prey.Prey;
+import java.awt.Point;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+
 
 class TestPrey {
   
@@ -18,8 +23,11 @@ class TestPrey {
   @Test
   void test() {
     assertTrue(prey.getWeight() != 0.0);
-    System.out.println(prey.getWeight()/10);
-    System.out.println(prey.getPosition());
+    Point p = new Point(0,0);
+    assertFalse(prey.preyPosition.equals(p));
+    assertTrue(prey.isHunted == false);
+    prey.setHunted();
+    assertTrue(prey.isHunted == true);
   }
 
 }
