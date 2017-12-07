@@ -5,6 +5,11 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Point;
 
+/**
+ * Representation graphique des phéromones.
+ * @author yallay
+ *
+ */
 public class Square extends GraphicElement {
 
   public Square(Point pos, Dimension dim) {

@@ -1,14 +1,19 @@
 package anthill.model.roles;
 
-import java.awt.Point;
-import java.util.Random;
-
 import anthill.model.Ant;
 import anthill.model.Anthill;
 
+import java.awt.Point;
+import java.util.Random;
+
+/**
+ * Cette classe defini le role concret de type reine.
+ * @author yallay
+ *
+ */
 public class Queen extends Role {
-  boolean isReign;
-  boolean isPregnant;
+  boolean isReign;/*Si la fourmilière a été crée ou pas*/
+  boolean isPregnant;/*Si elle est fécondé*/
   
   /**
    * Constructeur de la queen.

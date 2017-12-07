@@ -1,37 +1,42 @@
 package anthill.model;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Random;
-
-import anthill.iface.Observer;
 import anthill.iface.Visitor;
 import anthill.model.states.Egg;
 import anthill.model.states.State;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Random;
+
+
+/**
+  * 
+  * @author Monot_Vorotnikov
+  * Classe Ant(Fourmi).
+  */
 
 
 public class Ant implements anthill.iface.Observable, anthill.iface.Visitable {
-  private static int antCompt = 0;
-  private int antId;
-  private Date dateStart;
-  private Date dateEnd;
-  private Double weight;
-  private Double foodQtty;
-  private Date dateMeal;
-  public State state;
+  private static int antCompt = 0; /* compteur de fourmi*/
+  private int antId; /* Son Id */
+  private Date dateStart; /* date de naissance */
+  private Date dateEnd; /* date de mort */
+  private Double weight; /* son poids */
+  private Double foodQtty; /* la quantité de nouriture qu'il a mangé depuis son dernier repas */
+  private Date dateMeal; /* la dernière fois qu'il a mangé a sa faim */
+  public State state; /* son état */
   
   /**
    * Ant constructor.
    */
   public Ant() {
-    this.antId = this.antCompt;
+    this.antId = this.antCompt; 
     this.antCompt++;
     this.dateStart = new Date();
     this.dateEnd = whenIDie(antId);
     this.weight = 1.0;
     this.foodQtty = 0.0;
-    this.state = new Egg();     
+    this.state = new Egg(); /* chaque fourmi crée devient un oeuf automatiquement */
   }
 
     
@@ -42,7 +47,10 @@ public class Ant implements anthill.iface.Observable, anthill.iface.Visitable {
   public void setDateStart(Date d) {
     this.dateStart = d;
   }
-  
+  /**
+   * Cette fonction permet de nourrir la fourmi.
+   * @param amountOfFood la quantité de nourriture
+   */
   public void setFoodQtty(Double amountOfFood) {
     this.foodQtty += amountOfFood;
   }
@@ -85,16 +93,20 @@ public class Ant implements anthill.iface.Observable, anthill.iface.Visitable {
 
   @Override
   public void notifyToObserverEvol(Anthill ah) {
-    String stateF = "Egg";//First state
-     String stateS = "Maggot";//Second state 
-     String stateT = "Chrysalis";//Third state
-     if (this.differenceBetweenBirthToday() >= 3 && getStateString().equals(stateF)) {
-       ah.ob.updateEggToMaggot(ah,this.antId);
-     } else if (this.differenceBetweenBirthToday() >= 13 && getStateString().equals(stateS)) {
-       ah.ob.updateMaggotToChrysalis(ah,this.antId);
-     } else if (this.differenceBetweenBirthToday() >= 30  && getStateString().equals(stateT)) {
-       ah.ob.updateChrysalisToAdult(ah,this.antId);
-     }
+    /*La fourmi notifie a son observateur qu'il va évolué*/
+    String stateF = "Egg";//First state oeuf
+    String stateS = "Maggot";//Second state larve
+    String stateT = "Chrysalis";//Third state nymphe
+    if (this.differenceBetweenBirthToday() >= 3 && getStateString().equals(stateF)) { 
+      /*Si la différence entre la date de naissance et la date actuelle est de trois oeuf=>Larve*/
+      ah.ob.updateEggToMaggot(ah,this.antId);//appelle de l'observer pour mise a jour
+    } else if (this.differenceBetweenBirthToday() >= 13 && getStateString().equals(stateS)) {
+      /* Si la différence est de 13 la larve devient une nymphe*/
+      ah.ob.updateMaggotToChrysalis(ah,this.antId);
+    } else if (this.differenceBetweenBirthToday() >= 30  && getStateString().equals(stateT)) {
+      /* si la différence est de 30 la nymphe devient une fourmi*/
+      ah.ob.updateChrysalisToAdult(ah,this.antId);
+    }
   }
   /**
    * Add nbDays to the birth https://openclassrooms.com/forum/sujet/compteur-d-instancesdate.
@@ -126,12 +138,12 @@ public class Ant implements anthill.iface.Observable, anthill.iface.Visitable {
   
   /**
    * Define when the ant die.
-   * @return The Darkest day of his life
+   * @return The date when he will die
    */
   public Date whenIDie(int id) {
-    if (id != 1) {
-      int min = 548;
-      int max = 912;
+    if (id != 1) {/*pour la fourmi*/
+      int min = 548;/*1,5 année*/
+      int max = 912;/* 2,5 année*/
       Random rand = new Random();
       int nbDay = rand.nextInt((max + 1) - min) + min;
       Calendar deathDate = Calendar.getInstance();
@@ -139,8 +151,9 @@ public class Ant implements anthill.iface.Observable, anthill.iface.Visitable {
       deathDate.add(Calendar.DATE, nbDay);
       return deathDate.getTime();
     }
-    int min = 1460;
-    int max = 3650;
+    /*pour la reine*/
+    int min = 1460;/*4 année*/
+    int max = 3650;/*10 année*/
     Random rand = new Random();
     int nbDay = rand.nextInt((max + 1) - min) + min;
     Calendar deathDate = Calendar.getInstance();
@@ -152,6 +165,7 @@ public class Ant implements anthill.iface.Observable, anthill.iface.Visitable {
   
   @Override
   public void notifyToObserverDeath(Anthill ah) {
+    /*si elle a atteins sa date de mort ou si elle a pas manger depuis 1 jour elle meurt*/
     if (this.differenceBetweenTodayDeath() <= 0 || this.differenceBetweenTodayMeal() >= 1) {
       ah.ob.updateDeath(this,ah);
     }
@@ -159,6 +173,7 @@ public class Ant implements anthill.iface.Observable, anthill.iface.Visitable {
   
   @Override
   public void notifyToObserverFood(Anthill ah) {
+    /*Si elle a mangé a sa faim elle mets a jour sa date du dernier repas*/
     if (this.getFoodQtty() >= this.getWeight()) {
       ah.ob.updateFood(this);
     }

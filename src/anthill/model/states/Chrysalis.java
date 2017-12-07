@@ -2,6 +2,12 @@ package anthill.model.states;
 
 import anthill.model.roles.Role;
 
+/**
+ * Classe concrete de Sate elle représente la Nymphe.
+ * @author Monot_Vorotnikov
+ *
+ */
+
 public class Chrysalis extends State {
 
   String state;

@@ -1,16 +1,24 @@
 package anthill.model;
 
+import anthill.iface.Visitor;
+import anthill.model.prey.PreyA;
+import anthill.observer.Observer;
+
 import java.awt.Point;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import anthill.iface.Visitor;
-import anthill.observer.Observer;
-import anthill.model.prey.PreyA;
 
+
+/**
+ * la fourmilière.
+ * @author Monot_Vorotnikov
+ *
+ */
 public class Anthill implements anthill.iface.Visitable {
-  public List<Ant> listAnt;
-  public List<PreyA> meat;
+  public List<Ant> listAnt;/*Liste des fourmi*/
+  public List<PreyA> meat;/*List de nourriture*/
   int nbMaggot;
   int nbChrysalis;
   int nbEgg;
@@ -18,13 +26,13 @@ public class Anthill implements anthill.iface.Visitable {
   int nbPrince;
   int nbPrincess;
   int nbSoldier;
-  Point position;
-  public Observer ob;
+  Point position;/*Position de la fourmilière*/
+  public Observer ob;/*Chaque fourmilière a son observer et son visiteur unique*/
   public anthill.visitor.Visitor vi;
   
   /**
    * Anthill constructor.
-   * @param queen the Queen the Ant queen create the anthill.
+   * @param queen the Queen  create the anthill.
    */
   public Anthill(Ant queen) {
     position = queen.state.getRole().getPosition();

@@ -3,6 +3,11 @@ package anthill.visitor;
 import anthill.model.Ant;
 import anthill.model.Anthill;
 
+/**
+ * Classe visiteur.
+ * @author Monot_Vorotnikov
+ *
+ */
 public class Visitor implements anthill.iface.Visitor {
 
   
@@ -12,6 +17,9 @@ public class Visitor implements anthill.iface.Visitor {
   
   @Override
   public void visit(Ant a) {
+    /*
+     * On visite la fourmi
+     */
     String res = a.getAntId() + " ";
     res += a.getDateStart() + " ";
     res += a.getDateEnd() + " ";
@@ -27,6 +35,9 @@ public class Visitor implements anthill.iface.Visitor {
 
   @Override
   public void visit(Anthill ah) {
+    /*
+     * On visite les fourmis et la fourmilière. 
+     */
     for (Ant a : ah.listAnt) {
       visit(a);
     }
