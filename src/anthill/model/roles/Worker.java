@@ -91,6 +91,7 @@ public class Worker extends Role implements ObservableWorld {
     int northPc = 25; 
     int eastPc = 25;
     int southPc = 25;
+    @SuppressWarnings("unused")
     int westPc = 25;
     /*
      * Je recupère le contenu des cases(Nord,Sud,Ouest,Est) du monde dans le hashmap de World

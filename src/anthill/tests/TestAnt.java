@@ -3,17 +3,15 @@ package anthill.tests;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import anthill.model.Ant;
+import anthill.model.roles.Queen;
+import anthill.model.states.Adult;
+import anthill.model.states.Egg;
+
 import java.util.Calendar;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import anthill.model.Ant;
-import anthill.model.Anthill;
-import anthill.model.roles.Queen;
-import anthill.model.states.Adult;
-import anthill.model.states.Egg;
-import anthill.model.states.State;
 
 public class TestAnt {
   

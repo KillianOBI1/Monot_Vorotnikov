@@ -2,14 +2,14 @@ package anthill.tests;
 
 import static org.junit.Assert.assertTrue;
 
-import org.junit.jupiter.api.Test;
-
 import anthill.model.Ant;
 import anthill.model.Anthill;
 import anthill.model.roles.Queen;
 import anthill.model.states.Adult;
 import anthill.observer.Observer;
 import anthill.visitor.Visitor;
+
+import org.junit.jupiter.api.Test;
 
 class TestVisitor {
 
@@ -36,7 +36,8 @@ class TestVisitor {
     assertTrue(ah.getNbPrince() == 5);
     assertTrue(ah.getNbSoldier() == 20);
     assertTrue(ah.getNbPrincess() == 5);
-    assertTrue((ah.getNbPrince() + ah.getNbPrincess() + ah.getNbSoldier() + ah.getNbWorker() + 1) == 101);
+    int population = ah.getNbPrince() + ah.getNbPrincess() + ah.getNbSoldier() + ah.getNbWorker();
+    assertTrue((population + 1) == 101);
   }
 
 }

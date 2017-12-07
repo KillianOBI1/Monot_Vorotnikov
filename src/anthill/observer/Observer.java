@@ -12,9 +12,9 @@ import anthill.model.states.Chrysalis;
 import anthill.model.states.Egg;
 import anthill.model.states.Maggot;
 
-import java.util.Random;
 import java.awt.Point;
 import java.util.Date;
+import java.util.Random;
 
 /**
  * Observer: elle est enregistrer dans la fourmilière.

@@ -25,6 +25,7 @@ public class Ant implements anthill.iface.Observable, anthill.iface.Visitable {
   /**
    * Ant constructor.
    */
+  @SuppressWarnings("static-access")
   public Ant() {
     this.antId = this.antCompt; 
     this.antCompt++;
@@ -138,7 +139,7 @@ public class Ant implements anthill.iface.Observable, anthill.iface.Visitable {
    * @return The date when he will die
    */
   public Date whenIDie(int id) {
-    if (id != 1) {/*pour la fourmi*/
+    if (id != 1) { /*pour la fourmi*/
       int min = 548;/*1,5 année*/
       int max = 912;/* 2,5 année*/
       Random rand = new Random();
