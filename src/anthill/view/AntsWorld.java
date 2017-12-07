@@ -11,9 +11,13 @@ import javax.swing.JPanel;
 public class AntsWorld extends JPanel {
   
   private static final long serialVersionUID = 1L;
+  /*Liste des représentation graphique des fourmi*/
   private List<MovableDrawable> ants = new LinkedList<>();
+  /*Liste des représentation graphique des fourmilière*/
   private List<MovableDrawable> antHills = new LinkedList<>();
+  /*Liste des représentation graphique des carrés où seront dessiné des phéromones*/
   private List<MovableDrawable> square = new LinkedList<>();
+  /*Liste des représentation graphique des proies*/
   private List<MovableDrawable> preys = new LinkedList<>();
   
   private int grilleSize;
@@ -25,6 +29,7 @@ public class AntsWorld extends JPanel {
   public AntsWorld(int gsize) {
     this.grilleSize = gsize;
   }
+  
   public AntsWorld getAw() {
     return this;
   }
@@ -83,14 +88,15 @@ public class AntsWorld extends JPanel {
     }
     
     g.setColor(c);
+    //Dessin de la fourmilière
     for (Iterator<MovableDrawable> iter = antHills.iterator(); iter.hasNext();) {
       iter.next().draw(g);
     }
-    
+    //dessin des fourmis
     for (Iterator<MovableDrawable> iter = ants.iterator(); iter.hasNext();) {
       iter.next().draw(g);
     }
-    
+    //Dessin des phéromones
     List<MovableDrawable> contens = new LinkedList<>();
     for (int i = 0; i < square.size(); i++) {
       contens.add(square.get(i));
@@ -103,7 +109,7 @@ public class AntsWorld extends JPanel {
         e.printStackTrace();
       }
     }
-    
+    //Dessin des proies
     for (Iterator<MovableDrawable> iter = preys.iterator(); iter.hasNext();) { 
       iter.next().draw(g);
     }

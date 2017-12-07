@@ -1,8 +1,15 @@
 package anthill.model.roles;
 
+import anthill.model.Ant;
+
 import java.awt.Point;
 
-import anthill.model.Ant;
+/**
+ * Classe qui utilise le concept de role. 
+ * Cette classe représente l'individu sexé male.
+ * @author yallay
+ *
+ */
 
 public class Prince extends Role {
   

@@ -2,6 +2,12 @@ package anthill.model.roles;
 
 import java.awt.Point;
 
+/**
+ * Defini le role de soldat.
+ * @author Monot_Vorotnikov
+ *
+ */
+
 public class Soldier extends Role {
   
   public Soldier(Point p) {

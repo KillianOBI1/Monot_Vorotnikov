@@ -1,5 +1,10 @@
 package anthill.view;
 
+import anthill.model.Ant;
+import anthill.model.Anthill;
+import anthill.model.roles.Queen;
+import anthill.model.states.Adult;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -19,11 +24,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-import anthill.model.Ant;
-import anthill.model.Anthill;
-import anthill.model.roles.Queen;
-import anthill.model.states.Adult;
-import anthill.observer.Observer;
+
 
 
 public class AnthillWorldView {
@@ -40,16 +41,19 @@ public class AnthillWorldView {
     actionField.setBackground(Color.WHITE);
     int x = 0;
     int y = 0;
-    Ant q = new Ant();
-    q.state = new Adult(new Queen());
-
-    Anthill myAnthill = new Anthill(q);
+    Ant q = new Ant();//creation de la reine
+    q.state = new Adult(new Queen());//on defini son role
+    System.out.println(q.state.getRole().ifQueen(q).getPosition());
+    Anthill myAnthill = new Anthill(q);// creation de la fourmilière
+    myAnthill.listAnt.add(new Ant()); // on crée deux ouvrier
     myAnthill.listAnt.add(new Ant());
-    myAnthill.listAnt.add(new Ant());
-    World w = new World(antsWorld,myAnthill);
-    w.init();
+    World w = new World(antsWorld,myAnthill);// je crée le monde.
+    w.init();//initialisation
     w.setPreys();
     
+    /*
+     * Ici on force l'évolution en modifiant leurs dates de naissances
+     */
     for (Ant a : myAnthill.listAnt) {
       Calendar cal = Calendar.getInstance();
       cal.set(2017, 10, 05);
@@ -62,6 +66,7 @@ public class AnthillWorldView {
       antsWorld.addAnt(new AntView(antPos, new Dimension(10, 10)));
       if (a.state.getRole().toString(a).equals("Worker")) {
         a.state.getRole().ifWorker(a).registerObserver(w);
+        // si c'est un ouvrier on enregistre l'observer monde chez eux.
       }
     }
 
@@ -80,7 +85,7 @@ public class AnthillWorldView {
     });
     while (true) {
       List<MovableDrawable> drawables = antsWorld.contents();
-      
+      //Phase de mouvement
       for (int i = 0;i < myAnthill.listAnt.size();i++) {
         myAnthill.listAnt.get(i).getState().getRole().move();
         x = myAnthill.listAnt.get(i).getState().getRole().getPosition().x;

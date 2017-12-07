@@ -1,18 +1,24 @@
 package anthill.model.prey;
 
+import anthill.iface.ObservableWorld;
+import anthill.view.World;
+
 import java.awt.Point;
 import java.util.Date;
 import java.util.Random;
 
-import anthill.iface.ObservableWorld;
-import anthill.view.World;
+/**
+ * Classe qui utlise le concept de proie.
+ * @author Monot_Vorotnikov
+ *
+ */
 
 public class Prey extends PreyA implements ObservableWorld {
   public Double preyWeight;
-  public Boolean isHunted;
-  public Date dateDead;
-  public Point preyPosition;
-  private World wo;
+  public Boolean isHunted; /*Chassé ou non chassé*/
+  public Date dateDead; /*Quand elle est morte*/
+  public Point preyPosition; 
+  private World wo;/*Le monde dans lequel elle évolue*/
   private Random rdm;
   
   /**
@@ -49,6 +55,7 @@ public class Prey extends PreyA implements ObservableWorld {
 
   @Override
   public void registerObserver(World w) {
+    /*Elle enregistre son observateur*/
     wo = w;
   }
 
