@@ -4,7 +4,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
 
-import anthill.iface.Observer;
 import anthill.iface.Visitor;
 import anthill.model.states.Egg;
 import anthill.model.states.State;
